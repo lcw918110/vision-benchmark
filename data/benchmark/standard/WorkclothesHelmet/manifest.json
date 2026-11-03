@@ -1,0 +1,40 @@
+{
+  "name": "WorkclothesHelmet",
+  "task": "detect",
+  "seed": 42,
+  "target": 500,
+  "per_mine_quota": 39,
+  "mine_count": 13,
+  "images": 500,
+  "skipped_bad_labels": 0,
+  "bytes": 337382521,
+  "classes": [
+    "WorkClothes",
+    "Defaultb",
+    "Person",
+    "HeadWithHelmet",
+    "Defaultc",
+    "Defaultd",
+    "Defaulte",
+    "Defaultf",
+    "Head"
+  ],
+  "per_mine": {
+    "ah-kf": 32,
+    "ah-qf": 71,
+    "ah-yl": 17,
+    "hn-bysmk": 32,
+    "nmg-ymmk": 31,
+    "nx-rjz": 37,
+    "nx-ycw1": 31,
+    "nx-ycw2": 70,
+    "sx-dtmk": 10,
+    "sx-xhg": 31,
+    "sxx-hl1": 70,
+    "sxx-hll": 15,
+    "sxx-hsz": 53
+  },
+  "source_root": "/home/jykj/Dataset/Hbb/WorkclothesHelmet",
+  "names_file": "/home/jykj/Dataset/Hbb/WorkclothesHelmet/人工作服安全帽labels.names",
+  "covered_mine_count": 13
+}

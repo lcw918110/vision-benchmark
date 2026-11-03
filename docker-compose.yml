@@ -1,0 +1,33 @@
+services:
+  # 统一全栈推理与评测容器（内置 Ultralytics 8.4.99 + PyTorch 2.9.0+cu128，原生支持 YOLOv8m / YOLOv8l-OBB / YOLOv9e / YOLO11m / YOLO11x）
+  yolov8: &yolo-common
+    build:
+      context: ./docker/yolov8
+    image: vision/yolov8:8.4.99-cu12.8
+    runtime: nvidia
+    shm_size: "16gb"
+    environment:
+      NVIDIA_VISIBLE_DEVICES: "${YOLO_GPU:-0}"
+      NVIDIA_DRIVER_CAPABILITIES: compute,utility
+      YOLO_CONFIG_DIR: /logs/ultralytics
+    volumes:
+      - ./models/yolov8:/models:ro
+      - ./configs:/configs:ro
+      - ./scripts:/scripts:ro
+      - ./data/benchmark:/data/benchmark:ro
+      - /home/jykj/Dataset:/Dataset:ro
+      - ./logs:/logs
+      - ./output:/output
+
+  # 架构语义化别名服务（共享同一底层镜像层，零额外磁盘占用，支持按架构名直接启动）
+  yolov9:
+    <<: *yolo-common
+    image: vision/yolov9:8.4.99-cu12.8
+
+  yolo11:
+    <<: *yolo-common
+    image: vision/yolo11:8.4.99-cu12.8
+
+  yolo-unified:
+    <<: *yolo-common
+    image: vision/yolo-unified:8.4.99-cu12.8

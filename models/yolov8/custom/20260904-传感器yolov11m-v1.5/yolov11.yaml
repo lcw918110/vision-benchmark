@@ -1,0 +1,8 @@
+train: "/home/jykj/ZJH/Train/ChuanGanQi-Yolov11/data/train.txt"
+val: "/home/jykj/ZJH/Train/ChuanGanQi-Yolov11/data/val.txt"
+test: "/home/jykj/ZJH/Train/ChuanGanQi-Yolov11/data/test.txt"
+
+names:
+  0: Sensor
+  1: SensorAirInlet
+  2: SensorBracket

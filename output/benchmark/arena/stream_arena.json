@@ -1,0 +1,191 @@
+[
+  {
+    "arch": "YOLOv8m",
+    "label": "人睡觉 (YOLOv8m)",
+    "imgsz": 640,
+    "max_realtime_25fps_streams": 4,
+    "ladder": [
+      {
+        "streams": 1,
+        "microbatch_per_stream_fps": 44.0,
+        "microbatch_total_fps": 44.0,
+        "unbatched_per_stream_fps": 40.4,
+        "unbatched_total_fps": 40.4,
+        "step_mean_ms": 22.71,
+        "step_p99_ms": 26.54,
+        "vram_mb": 115.4,
+        "realtime_25fps_ok": true
+      },
+      {
+        "streams": 2,
+        "microbatch_per_stream_fps": 36.4,
+        "microbatch_total_fps": 72.8,
+        "unbatched_per_stream_fps": 23.8,
+        "unbatched_total_fps": 47.5,
+        "step_mean_ms": 27.48,
+        "step_p99_ms": 31.75,
+        "vram_mb": 142.1,
+        "realtime_25fps_ok": true
+      },
+      {
+        "streams": 4,
+        "microbatch_per_stream_fps": 26.7,
+        "microbatch_total_fps": 106.8,
+        "unbatched_per_stream_fps": 12.4,
+        "unbatched_total_fps": 49.8,
+        "step_mean_ms": 37.45,
+        "step_p99_ms": 43.58,
+        "vram_mb": 186.8,
+        "realtime_25fps_ok": true
+      },
+      {
+        "streams": 8,
+        "microbatch_per_stream_fps": 16.8,
+        "microbatch_total_fps": 134.3,
+        "unbatched_per_stream_fps": 6.6,
+        "unbatched_total_fps": 53.0,
+        "step_mean_ms": 59.56,
+        "step_p99_ms": 65.78,
+        "vram_mb": 273.0,
+        "realtime_25fps_ok": false
+      },
+      {
+        "streams": 16,
+        "microbatch_per_stream_fps": 9.5,
+        "microbatch_total_fps": 151.5,
+        "unbatched_per_stream_fps": 3.3,
+        "unbatched_total_fps": 53.1,
+        "step_mean_ms": 105.57,
+        "step_p99_ms": 128.92,
+        "vram_mb": 443.9,
+        "realtime_25fps_ok": false
+      }
+    ]
+  },
+  {
+    "arch": "YOLO11m",
+    "label": "风门开关 (YOLO11m)",
+    "imgsz": 640,
+    "max_realtime_25fps_streams": 4,
+    "ladder": [
+      {
+        "streams": 1,
+        "microbatch_per_stream_fps": 35.1,
+        "microbatch_total_fps": 35.1,
+        "unbatched_per_stream_fps": 37.8,
+        "unbatched_total_fps": 37.8,
+        "step_mean_ms": 28.53,
+        "step_p99_ms": 31.87,
+        "vram_mb": 108.9,
+        "realtime_25fps_ok": true
+      },
+      {
+        "streams": 2,
+        "microbatch_per_stream_fps": 36.6,
+        "microbatch_total_fps": 73.3,
+        "unbatched_per_stream_fps": 20.9,
+        "unbatched_total_fps": 41.8,
+        "step_mean_ms": 27.27,
+        "step_p99_ms": 30.61,
+        "vram_mb": 143.9,
+        "realtime_25fps_ok": true
+      },
+      {
+        "streams": 4,
+        "microbatch_per_stream_fps": 30.6,
+        "microbatch_total_fps": 122.5,
+        "unbatched_per_stream_fps": 10.3,
+        "unbatched_total_fps": 41.4,
+        "step_mean_ms": 32.64,
+        "step_p99_ms": 36.6,
+        "vram_mb": 197.6,
+        "realtime_25fps_ok": true
+      },
+      {
+        "streams": 8,
+        "microbatch_per_stream_fps": 24.2,
+        "microbatch_total_fps": 193.8,
+        "unbatched_per_stream_fps": 5.5,
+        "unbatched_total_fps": 44.4,
+        "step_mean_ms": 41.28,
+        "step_p99_ms": 45.52,
+        "vram_mb": 308.9,
+        "realtime_25fps_ok": false
+      },
+      {
+        "streams": 16,
+        "microbatch_per_stream_fps": 15.8,
+        "microbatch_total_fps": 252.0,
+        "unbatched_per_stream_fps": 2.8,
+        "unbatched_total_fps": 45.5,
+        "step_mean_ms": 63.5,
+        "step_p99_ms": 69.53,
+        "vram_mb": 528.9,
+        "realtime_25fps_ok": false
+      }
+    ]
+  },
+  {
+    "arch": "YOLO11x",
+    "label": "人安全帽 (YOLO11x)",
+    "imgsz": 960,
+    "max_realtime_25fps_streams": 0,
+    "ladder": [
+      {
+        "streams": 1,
+        "microbatch_per_stream_fps": 21.3,
+        "microbatch_total_fps": 21.3,
+        "unbatched_per_stream_fps": 22.0,
+        "unbatched_total_fps": 22.0,
+        "step_mean_ms": 46.88,
+        "step_p99_ms": 52.27,
+        "vram_mb": 269.8,
+        "realtime_25fps_ok": false
+      },
+      {
+        "streams": 2,
+        "microbatch_per_stream_fps": 22.1,
+        "microbatch_total_fps": 44.2,
+        "unbatched_per_stream_fps": 12.2,
+        "unbatched_total_fps": 24.4,
+        "step_mean_ms": 45.22,
+        "step_p99_ms": 52.78,
+        "vram_mb": 375.6,
+        "realtime_25fps_ok": false
+      },
+      {
+        "streams": 4,
+        "microbatch_per_stream_fps": 16.4,
+        "microbatch_total_fps": 65.6,
+        "unbatched_per_stream_fps": 6.5,
+        "unbatched_total_fps": 25.8,
+        "step_mean_ms": 60.93,
+        "step_p99_ms": 67.0,
+        "vram_mb": 574.3,
+        "realtime_25fps_ok": false
+      },
+      {
+        "streams": 8,
+        "microbatch_per_stream_fps": 10.3,
+        "microbatch_total_fps": 82.7,
+        "unbatched_per_stream_fps": 3.4,
+        "unbatched_total_fps": 27.0,
+        "step_mean_ms": 96.74,
+        "step_p99_ms": 116.37,
+        "vram_mb": 966.8,
+        "realtime_25fps_ok": false
+      },
+      {
+        "streams": 16,
+        "microbatch_per_stream_fps": 5.1,
+        "microbatch_total_fps": 81.7,
+        "unbatched_per_stream_fps": 1.7,
+        "unbatched_total_fps": 27.5,
+        "step_mean_ms": 195.78,
+        "step_p99_ms": 209.46,
+        "vram_mb": 1750.8,
+        "realtime_25fps_ok": false
+      }
+    ]
+  }
+]

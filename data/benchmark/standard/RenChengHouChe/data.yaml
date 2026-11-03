@@ -1,0 +1,7 @@
+# 标准测试集（跨矿区分层抽样，seed=42）
+# 仅用于评测；重训时必须从训练/验证集中排除 excluded.txt 内的图片
+path: /data/benchmark/standard/RenChengHouChe
+train: images
+val: images
+nc: 10
+names: ['Ride', 'Sleep', 'Person', 'HeadWithHelmet', 'Violation', 'Dengdi', 'Front', 'Back', 'Head', 'Phone']

@@ -1,0 +1,152 @@
+[
+  {
+    "arch": "YOLO11m",
+    "label": "风门开关 (YOLO11m)",
+    "imgsz": 640,
+    "eager_fp32_b1": {
+      "mean_ms": 17.0,
+      "p99_ms": 20.021,
+      "fps": 58.8
+    },
+    "ts_jit_fp32_b1": {
+      "mean_ms": 10.09,
+      "p99_ms": 11.37,
+      "fps": 99.1,
+      "max_diff": 0.0
+    },
+    "eager_fp16_b1": {
+      "mean_ms": 17.474,
+      "p99_ms": 17.608,
+      "fps": 57.2
+    },
+    "ts_jit_fp16_b1": {
+      "mean_ms": 11.009,
+      "p99_ms": 11.176,
+      "fps": 90.8,
+      "max_diff": 0.5
+    },
+    "eager_fp16_b16_fps": 732.6,
+    "ts_jit_fp16_b16_fps": 731.5,
+    "b1_fp16_jit_speedup": 1.59
+  },
+  {
+    "arch": "YOLOv8m",
+    "label": "人睡觉 (YOLOv8m)",
+    "imgsz": 640,
+    "eager_fp32_b1": {
+      "mean_ms": 16.467,
+      "p99_ms": 20.813,
+      "fps": 60.7
+    },
+    "ts_jit_fp32_b1": {
+      "mean_ms": 10.574,
+      "p99_ms": 10.775,
+      "fps": 94.6,
+      "max_diff": 0.0
+    },
+    "eager_fp16_b1": {
+      "mean_ms": 16.289,
+      "p99_ms": 16.416,
+      "fps": 61.4
+    },
+    "ts_jit_fp16_b1": {
+      "mean_ms": 8.579,
+      "p99_ms": 9.967,
+      "fps": 116.6,
+      "max_diff": 0.5
+    },
+    "eager_fp16_b16_fps": 754.7,
+    "ts_jit_fp16_b16_fps": 757.6,
+    "b1_fp16_jit_speedup": 1.9
+  },
+  {
+    "arch": "YOLOv8l-OBB",
+    "label": "探水前上杆 (YOLOv8l-OBB)",
+    "imgsz": 640,
+    "eager_fp32_b1": {
+      "mean_ms": 22.0,
+      "p99_ms": 25.878,
+      "fps": 45.5
+    },
+    "ts_jit_fp32_b1": {
+      "mean_ms": 13.834,
+      "p99_ms": 14.049,
+      "fps": 72.3,
+      "max_diff": 6.1e-05
+    },
+    "eager_fp16_b1": {
+      "mean_ms": 21.857,
+      "p99_ms": 24.296,
+      "fps": 45.8
+    },
+    "ts_jit_fp16_b1": {
+      "mean_ms": 14.311,
+      "p99_ms": 14.451,
+      "fps": 69.9,
+      "max_diff": 0.5
+    },
+    "eager_fp16_b16_fps": 448.0,
+    "ts_jit_fp16_b16_fps": 451.3,
+    "b1_fp16_jit_speedup": 1.53
+  },
+  {
+    "arch": "YOLOv9e",
+    "label": "探水后上杆 (YOLOv9e)",
+    "imgsz": 960,
+    "eager_fp32_b1": {
+      "mean_ms": 39.751,
+      "p99_ms": 42.595,
+      "fps": 25.2
+    },
+    "ts_jit_fp32_b1": {
+      "mean_ms": 23.702,
+      "p99_ms": 24.612,
+      "fps": 42.2,
+      "max_diff": 0.0
+    },
+    "eager_fp16_b1": {
+      "mean_ms": 41.612,
+      "p99_ms": 43.259,
+      "fps": 24.0
+    },
+    "ts_jit_fp16_b1": {
+      "mean_ms": 25.272,
+      "p99_ms": 25.794,
+      "fps": 39.6,
+      "max_diff": 0.5
+    },
+    "eager_fp16_b16_fps": 90.9,
+    "ts_jit_fp16_b16_fps": 90.7,
+    "b1_fp16_jit_speedup": 1.65
+  },
+  {
+    "arch": "YOLO11x",
+    "label": "人安全帽 (YOLO11x)",
+    "imgsz": 960,
+    "eager_fp32_b1": {
+      "mean_ms": 31.462,
+      "p99_ms": 33.531,
+      "fps": 31.8
+    },
+    "ts_jit_fp32_b1": {
+      "mean_ms": 14.642,
+      "p99_ms": 15.054,
+      "fps": 68.3,
+      "max_diff": 0.0
+    },
+    "eager_fp16_b1": {
+      "mean_ms": 32.578,
+      "p99_ms": 33.901,
+      "fps": 30.7
+    },
+    "ts_jit_fp16_b1": {
+      "mean_ms": 16.174,
+      "p99_ms": 18.984,
+      "fps": 61.8,
+      "max_diff": 1.0
+    },
+    "eager_fp16_b16_fps": 125.4,
+    "ts_jit_fp16_b16_fps": 125.5,
+    "b1_fp16_jit_speedup": 2.01
+  }
+]

@@ -1,0 +1,233 @@
+[
+  {
+    "name": "人安全帽",
+    "dataset_key": "PersonHelmet",
+    "arch": "YOLO11x",
+    "task": "detect",
+    "images": 600,
+    "bg_images": 243,
+    "covered_mines": 330,
+    "total_mines": 373,
+    "size_mb": 325.5,
+    "total_boxes": 1696,
+    "small_boxes": 684,
+    "medium_boxes": 703,
+    "large_boxes": 309,
+    "cls_counts": {
+      "2": 888,
+      "3": 328,
+      "8": 480
+    }
+  },
+  {
+    "name": "人睡觉",
+    "dataset_key": "PersonSleep",
+    "arch": "YOLOv8m",
+    "task": "detect",
+    "images": 500,
+    "bg_images": 23,
+    "covered_mines": 21,
+    "total_mines": 21,
+    "size_mb": 312.7,
+    "total_boxes": 1222,
+    "small_boxes": 204,
+    "medium_boxes": 722,
+    "large_boxes": 296,
+    "cls_counts": {
+      "0": 148,
+      "2": 1074
+    }
+  },
+  {
+    "name": "人工作服",
+    "dataset_key": "WorkclothesHelmet",
+    "arch": "YOLOv8m",
+    "task": "detect",
+    "images": 500,
+    "bg_images": 2,
+    "covered_mines": 13,
+    "total_mines": 13,
+    "size_mb": 321.8,
+    "total_boxes": 2200,
+    "small_boxes": 1007,
+    "medium_boxes": 933,
+    "large_boxes": 260,
+    "cls_counts": {
+      "0": 225,
+      "2": 899,
+      "3": 369,
+      "8": 707
+    }
+  },
+  {
+    "name": "人乘猴车",
+    "dataset_key": "RenChengHouChe",
+    "arch": null,
+    "task": "detect",
+    "images": 500,
+    "bg_images": 162,
+    "covered_mines": 12,
+    "total_mines": 12,
+    "size_mb": 266.8,
+    "total_boxes": 1564,
+    "small_boxes": 283,
+    "medium_boxes": 714,
+    "large_boxes": 567,
+    "cls_counts": {
+      "0": 111,
+      "1": 43,
+      "2": 579,
+      "3": 359,
+      "4": 101,
+      "5": 218,
+      "8": 92,
+      "9": 61
+    }
+  },
+  {
+    "name": "皮带原版",
+    "dataset_key": "PiDaiYuanBan",
+    "arch": "YOLO11m",
+    "task": "detect",
+    "images": 600,
+    "bg_images": 0,
+    "covered_mines": 272,
+    "total_mines": 272,
+    "size_mb": 290.2,
+    "total_boxes": 4351,
+    "small_boxes": 2262,
+    "medium_boxes": 1477,
+    "large_boxes": 612,
+    "cls_counts": {
+      "0": 180,
+      "1": 382,
+      "2": 11,
+      "3": 3256,
+      "4": 332,
+      "5": 88,
+      "6": 15,
+      "7": 87
+    }
+  },
+  {
+    "name": "护帮板",
+    "dataset_key": "HuBangBan",
+    "arch": null,
+    "task": "detect",
+    "images": 500,
+    "bg_images": 22,
+    "covered_mines": 38,
+    "total_mines": 38,
+    "size_mb": 229.6,
+    "total_boxes": 1938,
+    "small_boxes": 58,
+    "medium_boxes": 910,
+    "large_boxes": 970,
+    "cls_counts": {
+      "2": 34,
+      "3": 1783,
+      "4": 121
+    }
+  },
+  {
+    "name": "探水后上杆钻机",
+    "dataset_key": "TanShuiHouShangGan",
+    "arch": "YOLOv9e",
+    "task": "detect",
+    "images": 500,
+    "bg_images": 2,
+    "covered_mines": 58,
+    "total_mines": 58,
+    "size_mb": 191.0,
+    "total_boxes": 819,
+    "small_boxes": 23,
+    "medium_boxes": 483,
+    "large_boxes": 313,
+    "cls_counts": {
+      "0": 418,
+      "1": 12,
+      "2": 389
+    }
+  },
+  {
+    "name": "风门开关",
+    "dataset_key": "FengMenKaiGuan",
+    "arch": "YOLO11m",
+    "task": "detect",
+    "images": 500,
+    "bg_images": 11,
+    "covered_mines": 10,
+    "total_mines": 10,
+    "size_mb": 324.7,
+    "total_boxes": 493,
+    "small_boxes": 0,
+    "medium_boxes": 36,
+    "large_boxes": 457,
+    "cls_counts": {
+      "0": 247,
+      "1": 246
+    }
+  },
+  {
+    "name": "传感器",
+    "dataset_key": "ChuanGanQi",
+    "arch": "YOLO11m",
+    "task": "detect",
+    "images": 400,
+    "bg_images": 0,
+    "covered_mines": 8,
+    "total_mines": 8,
+    "size_mb": 235.6,
+    "total_boxes": 1201,
+    "small_boxes": 377,
+    "medium_boxes": 536,
+    "large_boxes": 288,
+    "cls_counts": {
+      "0": 620,
+      "1": 483,
+      "2": 98
+    }
+  },
+  {
+    "name": "卡车空满载",
+    "dataset_key": "ChanYunXiaoMeiZhong",
+    "arch": null,
+    "task": "detect",
+    "images": 500,
+    "bg_images": 131,
+    "covered_mines": 8,
+    "total_mines": 8,
+    "size_mb": 331.3,
+    "total_boxes": 387,
+    "small_boxes": 0,
+    "medium_boxes": 2,
+    "large_boxes": 385,
+    "cls_counts": {
+      "0": 188,
+      "1": 22,
+      "3": 63,
+      "6": 32,
+      "7": 82
+    }
+  },
+  {
+    "name": "探水前上杆",
+    "dataset_key": "TS_Front_V2",
+    "arch": "YOLOv8l-OBB",
+    "task": "obb",
+    "images": 600,
+    "bg_images": 0,
+    "covered_mines": 4,
+    "total_mines": 4,
+    "size_mb": 303.1,
+    "total_boxes": 1166,
+    "small_boxes": 0,
+    "medium_boxes": 64,
+    "large_boxes": 1102,
+    "cls_counts": {
+      "0": 230,
+      "1": 372,
+      "2": 564
+    }
+  }
+]

@@ -1,0 +1,9 @@
+path: /home/jykj/ZJH/Train/PersonSleep-Yolov8/data
+train: "./train.txt"
+val: "./val.txt"
+test: "./test.txt"
+
+names:
+  0: Sleep
+  1: Defaulta
+  2: Person

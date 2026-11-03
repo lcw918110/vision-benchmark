@@ -1,0 +1,24 @@
+{
+  "name": "TS_Front_V2",
+  "task": "obb",
+  "seed": 42,
+  "target": 600,
+  "per_mine_quota": 150,
+  "mine_count": 4,
+  "images": 600,
+  "skipped_bad_labels": 0,
+  "bytes": 317857671,
+  "classes": [
+    "Equipment_Nothing",
+    "Equipment_Something",
+    "Machine"
+  ],
+  "per_mine": {
+    "1-tanshui-Cao-81282": 150,
+    "1-tanshui-Li-78583": 150,
+    "1-tanshui-Qiao-11663": 150,
+    "1-tanshui-Zhi-37807": 150
+  },
+  "source_root": "/home/jykj/Dataset/Obb/TS-Front_V2/Data",
+  "names_file": "/home/jykj/Dataset/Obb/TS-Front_V2/前上杆探水labels.names"
+}

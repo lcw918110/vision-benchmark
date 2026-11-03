@@ -1,0 +1,194 @@
+[
+  {
+    "dataset": "WorkclothesHelmet (150张, 6矿区)",
+    "candidate": "YOLOv8m (20260806-99)",
+    "weights": "/models/custom/20260806-99工作服安全帽yolov8m-v1.0/20260806-99.pt",
+    "imgsz": 640,
+    "classes": [
+      2,
+      3,
+      8
+    ],
+    "mAP50": 0.9904,
+    "mAP50_95": 0.8689,
+    "precision": 0.9836,
+    "recall": 0.9929,
+    "per_class_AP50": {
+      "Person": 0.9925,
+      "HeadWithHelmet": 0.9837,
+      "Head": 0.995
+    },
+    "infer_ms": 3.48,
+    "e2e_ms": 4.98,
+    "e2e_fps": 200.8,
+    "elapsed_s": 7.31
+  },
+  {
+    "dataset": "WorkclothesHelmet (150张, 6矿区)",
+    "candidate": "YOLOv8m (20260806-99)",
+    "weights": "/models/custom/20260806-99工作服安全帽yolov8m-v1.0/20260806-99.pt",
+    "imgsz": 960,
+    "classes": [
+      2,
+      3,
+      8
+    ],
+    "mAP50": 0.9841,
+    "mAP50_95": 0.8392,
+    "precision": 0.9862,
+    "recall": 0.9781,
+    "per_class_AP50": {
+      "Person": 0.9844,
+      "HeadWithHelmet": 0.9731,
+      "Head": 0.995
+    },
+    "infer_ms": 5.18,
+    "e2e_ms": 7.16,
+    "e2e_fps": 139.7,
+    "elapsed_s": 6.71
+  },
+  {
+    "dataset": "WorkclothesHelmet (150张, 6矿区)",
+    "candidate": "YOLO11x (yolo11x_960_best)",
+    "weights": "/models/custom/person/yolo11x_960_best.pt",
+    "imgsz": 640,
+    "classes": [
+      2,
+      3,
+      8
+    ],
+    "mAP50": 0.8773,
+    "mAP50_95": 0.6896,
+    "precision": 0.9125,
+    "recall": 0.9338,
+    "per_class_AP50": {
+      "Person": 0.7446,
+      "HeadWithHelmet": 0.8936,
+      "Head": 0.9936
+    },
+    "infer_ms": 5.48,
+    "e2e_ms": 6.7,
+    "e2e_fps": 149.3,
+    "elapsed_s": 6.82
+  },
+  {
+    "dataset": "WorkclothesHelmet (150张, 6矿区)",
+    "candidate": "YOLO11x (yolo11x_960_best)",
+    "weights": "/models/custom/person/yolo11x_960_best.pt",
+    "imgsz": 960,
+    "classes": [
+      2,
+      3,
+      8
+    ],
+    "mAP50": 0.8947,
+    "mAP50_95": 0.7405,
+    "precision": 0.9161,
+    "recall": 0.9413,
+    "per_class_AP50": {
+      "Person": 0.7757,
+      "HeadWithHelmet": 0.9134,
+      "Head": 0.9948
+    },
+    "infer_ms": 10.44,
+    "e2e_ms": 12.08,
+    "e2e_fps": 82.8,
+    "elapsed_s": 7.6
+  },
+  {
+    "dataset": "PersonHelmet (309张, 156矿区)",
+    "candidate": "YOLOv8m (20260806-99)",
+    "weights": "/models/custom/20260806-99工作服安全帽yolov8m-v1.0/20260806-99.pt",
+    "imgsz": 640,
+    "classes": [
+      2,
+      3,
+      8
+    ],
+    "mAP50": 0.4291,
+    "mAP50_95": 0.2904,
+    "precision": 0.8312,
+    "recall": 0.438,
+    "per_class_AP50": {
+      "Person": 0.2822,
+      "HeadWithHelmet": 0.3782,
+      "Head": 0.6269
+    },
+    "infer_ms": 2.31,
+    "e2e_ms": 3.11,
+    "e2e_fps": 321.5,
+    "elapsed_s": 12.98
+  },
+  {
+    "dataset": "PersonHelmet (309张, 156矿区)",
+    "candidate": "YOLOv8m (20260806-99)",
+    "weights": "/models/custom/20260806-99工作服安全帽yolov8m-v1.0/20260806-99.pt",
+    "imgsz": 960,
+    "classes": [
+      2,
+      3,
+      8
+    ],
+    "mAP50": 0.4695,
+    "mAP50_95": 0.3339,
+    "precision": 0.8091,
+    "recall": 0.4833,
+    "per_class_AP50": {
+      "Person": 0.2808,
+      "HeadWithHelmet": 0.4177,
+      "Head": 0.7099
+    },
+    "infer_ms": 4.26,
+    "e2e_ms": 5.59,
+    "e2e_fps": 178.9,
+    "elapsed_s": 13.89
+  },
+  {
+    "dataset": "PersonHelmet (309张, 156矿区)",
+    "candidate": "YOLO11x (yolo11x_960_best)",
+    "weights": "/models/custom/person/yolo11x_960_best.pt",
+    "imgsz": 640,
+    "classes": [
+      2,
+      3,
+      8
+    ],
+    "mAP50": 0.9033,
+    "mAP50_95": 0.6916,
+    "precision": 0.9525,
+    "recall": 0.9037,
+    "per_class_AP50": {
+      "Person": 0.9017,
+      "HeadWithHelmet": 0.8832,
+      "Head": 0.925
+    },
+    "infer_ms": 5.15,
+    "e2e_ms": 6.16,
+    "e2e_fps": 162.3,
+    "elapsed_s": 14.71
+  },
+  {
+    "dataset": "PersonHelmet (309张, 156矿区)",
+    "candidate": "YOLO11x (yolo11x_960_best)",
+    "weights": "/models/custom/person/yolo11x_960_best.pt",
+    "imgsz": 960,
+    "classes": [
+      2,
+      3,
+      8
+    ],
+    "mAP50": 0.9325,
+    "mAP50_95": 0.7344,
+    "precision": 0.9587,
+    "recall": 0.9299,
+    "per_class_AP50": {
+      "Person": 0.9299,
+      "HeadWithHelmet": 0.9227,
+      "Head": 0.9448
+    },
+    "infer_ms": 12.34,
+    "e2e_ms": 13.73,
+    "e2e_fps": 72.8,
+    "elapsed_s": 16.77
+  }
+]

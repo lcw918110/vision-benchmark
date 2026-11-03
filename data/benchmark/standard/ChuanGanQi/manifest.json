@@ -1,0 +1,30 @@
+{
+  "name": "ChuanGanQi",
+  "task": "detect",
+  "seed": 42,
+  "target": 400,
+  "per_mine_quota": 50,
+  "mine_count": 8,
+  "images": 400,
+  "skipped_bad_labels": 0,
+  "bytes": 247016634,
+  "classes": [
+    "Sensor",
+    "SensorAirInlet",
+    "SensorBracket"
+  ],
+  "per_mine": {
+    "gz-sjs": 5,
+    "nmg-betmk": 81,
+    "nmg-bzg": 43,
+    "nmg-swmk": 23,
+    "sd-jzm": 93,
+    "sd-tk": 43,
+    "sx-hyek": 43,
+    "sx-sjhmk": 57
+  },
+  "source_root": "/home/jykj/Dataset/Hbb/ChuanGanQi",
+  "names_file": "/home/jykj/Dataset/Hbb/ChuanGanQi/传感器labels.names",
+  "class_stratified_supplement": 12,
+  "covered_mine_count": 8
+}

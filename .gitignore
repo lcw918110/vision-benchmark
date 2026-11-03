@@ -1,0 +1,54 @@
+# ==============================================================================
+# Git 仓库版本控制边界规划 (.gitignore)
+# 原则：代码、配置、args.yaml、测试集抽样溯源清单(manifest/excluded)、评测结果(JSON/MD)与文档(docs/)入库；
+#      大体积二进制权重(.pt)、标准集原始图片/标签(3.1GB)、测试视频(234MB)、日志与敏感凭据忽略。
+# ==============================================================================
+
+# 1. 模型权重：忽略大体积二进制权重，但保留 custom/ 下的 args.yaml 与模型配置 .yaml
+models/**/*.pt
+models/**/*.pth
+models/**/*.onnx
+models/**/*.engine
+models/**/*.om
+models/**/*.rknn
+models/**/*.bmodel
+models/yolov8/detect/
+models/yolov8/segment/
+models/yolov8/pose/
+models/yolov8/obb/
+models/yolov8/classify/
+
+# 2. 标准测试集与数据：忽略 3.3GB 原始图片/标签/视频，但保留 standard/* 下的 data.yaml / manifest.json / excluded.txt
+data/raw/
+data/benchmark/videos/
+data/benchmark/train_sample/
+data/benchmark/standard/*/images/
+data/benchmark/standard/*/labels/
+data/benchmark/standard/*/*.cache
+
+# 3. 评测输出产物：保留 output/benchmark/arena/*.json 与 *.md 供台账同步，忽略可视化大图与临时目录
+output/*
+!output/benchmark/
+output/benchmark/*
+!output/benchmark/arena/
+output/benchmark/arena/diff_wall/
+
+# 4. 运行时日志與缓存
+logs/
+configs/_archive/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# 5. 系统、编辑器与临时备份文件
+.DS_Store
+*.swp
+.vscode/
+.idea/
+*.bak
+
+# 6. 代理二进制与敏感凭据（严禁入库）
+mihomo-linux-amd64-compatible-v1.19.33
+mihomo-linux-amd64-compatible-v1.19.33.gz
+.mihomo/

@@ -1,0 +1,30 @@
+{
+  "name": "FengMenKaiGuan",
+  "task": "detect",
+  "seed": 42,
+  "target": 500,
+  "per_mine_quota": 50,
+  "mine_count": 10,
+  "images": 500,
+  "skipped_bad_labels": 0,
+  "bytes": 340492177,
+  "classes": [
+    "AirDoorClose",
+    "AirDoorOpen"
+  ],
+  "per_mine": {
+    "nmg-betmk": 37,
+    "nmg-bltmkk": 36,
+    "nmg-hcmk": 36,
+    "nmg-swmk": 36,
+    "sx-dtmk": 36,
+    "sx-dzmkk": 36,
+    "sx-tdmk": 75,
+    "sxx-cjt": 86,
+    "sxx-hll": 86,
+    "sxx-ysw": 36
+  },
+  "source_root": "/home/jykj/Dataset/Hbb/FengMenKaiGuan",
+  "names_file": "/home/jykj/Dataset/Hbb/FengMenKaiGuan/风门开关labels.names",
+  "covered_mine_count": 10
+}

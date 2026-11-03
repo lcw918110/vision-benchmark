@@ -1,0 +1,42 @@
+{
+  "name": "PersonSleep",
+  "task": "detect",
+  "seed": 42,
+  "target": 500,
+  "per_mine_quota": 24,
+  "mine_count": 21,
+  "images": 500,
+  "skipped_bad_labels": 0,
+  "bytes": 327853860,
+  "classes": [
+    "Sleep",
+    "Defaultb",
+    "Person"
+  ],
+  "per_mine": {
+    "ahkf": 17,
+    "ahqf": 41,
+    "hlj": 41,
+    "hnpmsk": 17,
+    "nmg": 17,
+    "nmg-ctltmk": 17,
+    "nmgct": 17,
+    "nmgsbl": 41,
+    "nxycw": 17,
+    "sx": 41,
+    "sxdt": 17,
+    "sxhsj": 17,
+    "sxhsz": 17,
+    "sxjz": 17,
+    "sxsd": 17,
+    "sxsq": 17,
+    "sxx": 17,
+    "sxxbd": 41,
+    "sxxhg": 41,
+    "weihua": 17,
+    "wy": 16
+  },
+  "source_root": "/home/jykj/Dataset/Hbb/PersonSleep",
+  "names_file": "/home/jykj/Dataset/Hbb/PersonSleep/人睡觉labels.names",
+  "covered_mine_count": 21
+}

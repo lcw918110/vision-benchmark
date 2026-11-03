@@ -1,0 +1,34 @@
+{
+  "PersonHelmet": {
+    "int8_mAP50": 0.9717,
+    "int8_mAP50_95": 0.7364
+  },
+  "PersonSleep": {
+    "int8_mAP50": 0.9938,
+    "int8_mAP50_95": 0.8432
+  },
+  "WorkclothesHelmet": {
+    "int8_mAP50": 0.9877,
+    "int8_mAP50_95": 0.7897
+  },
+  "PiDaiYuanBan": {
+    "int8_mAP50": 0.985,
+    "int8_mAP50_95": 0.8759
+  },
+  "TanShuiHouShangGan": {
+    "int8_mAP50": 0.8196,
+    "int8_mAP50_95": 0.6293
+  },
+  "FengMenKaiGuan": {
+    "int8_mAP50": 0.9938,
+    "int8_mAP50_95": 0.9824
+  },
+  "ChuanGanQi": {
+    "int8_mAP50": 0.995,
+    "int8_mAP50_95": 0.915
+  },
+  "TS_Front_V2": {
+    "int8_mAP50": 0.9949,
+    "int8_mAP50_95": 0.969
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "ChanYunXiaoMeiZhong",
+  "task": "detect",
+  "seed": 42,
+  "target": 500,
+  "per_mine_quota": 63,
+  "mine_count": 8,
+  "images": 500,
+  "skipped_bad_labels": 0,
+  "bytes": 347414681,
+  "classes": [
+    "EmptyTruck",
+    "FullTruck",
+    "Defaulta",
+    "Cover",
+    "Defaultb",
+    "Defaultc",
+    "LumpCoal",
+    "FoamedCoal"
+  ],
+  "per_mine": {
+    "caoyang": 93,
+    "chanyunxiao": 30,
+    "neimenggubuerdong": 30,
+    "neimengguerlintu": 93,
+    "neimengguhuineng": 29,
+    "shanxishengkai": 29,
+    "shanxizhangjiawa": 92,
+    "shanxizhujiamao": 92
+  },
+  "source_root": "/home/jykj/Dataset/Hbb/ChanYunXiaoMeiZhong",
+  "names_file": "/home/jykj/Dataset/Hbb/ChanYunXiaoMeiZhong/产运销煤种labels.names",
+  "class_stratified_supplement": 12,
+  "covered_mine_count": 8
+}

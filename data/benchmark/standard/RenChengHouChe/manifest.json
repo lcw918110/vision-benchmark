@@ -1,0 +1,41 @@
+{
+  "name": "RenChengHouChe",
+  "task": "detect",
+  "seed": 42,
+  "target": 500,
+  "per_mine_quota": 100,
+  "mine_count": 12,
+  "images": 500,
+  "skipped_bad_labels": 0,
+  "bytes": 279795022,
+  "classes": [
+    "Ride",
+    "Sleep",
+    "Person",
+    "HeadWithHelmet",
+    "Violation",
+    "Dengdi",
+    "Front",
+    "Back",
+    "Head",
+    "Phone"
+  ],
+  "per_mine": {
+    "hbqjy-1100gsp-2024090501": 31,
+    "nmgct-zfjylhhc-2024122501": 31,
+    "nxrjz-zj1120m-2024090501": 31,
+    "nxrjz-zj1120m-2024090601": 31,
+    "nxrjz-zj920m-2024090501": 31,
+    "sxhsz-ccd06-2024102901": 31,
+    "sxhsz-ccd06-2024111401": 31,
+    "sxll-ebhcjw-2024083101": 131,
+    "sxll-ebhcjw-2024092001": 31,
+    "sxll-fxjk-2024092801": 31,
+    "sxll-ybhcjw-2024081701": 30,
+    "sxll-ybhcjw-2024083101": 30
+  },
+  "source_root": "/home/jykj/Dataset/Hbb/RenChengHouChe",
+  "names_file": "/home/jykj/Dataset/Hbb/RenChengHouChe/人乘猴车labels.names",
+  "class_stratified_supplement": 30,
+  "covered_mine_count": 12
+}

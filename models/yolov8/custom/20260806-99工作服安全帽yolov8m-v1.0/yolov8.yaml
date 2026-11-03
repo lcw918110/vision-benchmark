@@ -1,0 +1,14 @@
+path: /home/jykj/ZJH/Train/WorkclothesHelmet-Yolov8/data
+train: "./train.txt"
+val: "./val.txt"
+
+names:
+  0: WorkClothes
+  1: Defaulta
+  2: Person
+  3: HeadWithHelmet
+  4: Defaultc
+  5: Defaultd
+  6: Defaulte
+  7: Defaultf
+  8: Head

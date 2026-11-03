@@ -1,0 +1,1123 @@
+[
+  {
+    "arch": "YOLO11x",
+    "dataset_cn": "人安全帽",
+    "label": "人安全帽 (YOLO11x)",
+    "dataset": "PersonHelmet",
+    "task": "detect",
+    "imgsz": 960,
+    "file_mb": 109.1,
+    "layers": 24,
+    "params_m": 56.84,
+    "gflops_640": 194.4,
+    "gflops_actual": 437.4,
+    "pure_gpu": {
+      "fp32_b1": {
+        "ms_per_img": 26.37,
+        "p95_ms": 26.551,
+        "p99_ms": 27.244,
+        "fps": 37.9,
+        "vram_mb": 1006.7
+      },
+      "fp32_b16": {
+        "ms_per_img": 15.127,
+        "p95_ms": 15.142,
+        "p99_ms": 15.144,
+        "fps": 66.1,
+        "vram_mb": 5595.6
+      },
+      "fp16_b1": {
+        "ms_per_img": 27.014,
+        "p95_ms": 27.123,
+        "p99_ms": 27.462,
+        "fps": 37.0,
+        "vram_mb": 1610.0
+      },
+      "fp16_b16": {
+        "ms_per_img": 7.954,
+        "p95_ms": 7.957,
+        "p99_ms": 7.958,
+        "fps": 125.7,
+        "vram_mb": 3235.0
+      }
+    },
+    "val_fp32_vs_fp16": {
+      "fp32": {
+        "mAP50": 0.9778,
+        "mAP50_95": 0.7625,
+        "precision": 0.9622,
+        "recall": 0.9372,
+        "val_fps": 95.8,
+        "per_class": {
+          "2": {
+            "ap50": 0.9782,
+            "ap": 0.8121,
+            "p": 0.9439,
+            "r": 0.9358
+          },
+          "3": {
+            "ap50": 0.9712,
+            "ap": 0.7075,
+            "p": 0.9527,
+            "r": 0.9215
+          },
+          "8": {
+            "ap50": 0.984,
+            "ap": 0.7681,
+            "p": 0.9899,
+            "r": 0.9542
+          }
+        }
+      },
+      "fp16": {
+        "mAP50": 0.9778,
+        "mAP50_95": 0.7602,
+        "precision": 0.9622,
+        "recall": 0.9369,
+        "val_fps": 36.2,
+        "per_class": {
+          "2": {
+            "ap50": 0.9782,
+            "ap": 0.811,
+            "p": 0.9442,
+            "r": 0.9358
+          },
+          "3": {
+            "ap50": 0.9713,
+            "ap": 0.706,
+            "p": 0.9524,
+            "r": 0.9207
+          },
+          "8": {
+            "ap50": 0.984,
+            "ap": 0.7636,
+            "p": 0.9901,
+            "r": 0.9542
+          }
+        }
+      },
+      "fp16_mAP50_delta": 0.0,
+      "fp16_mAP50_95_delta": -0.0023,
+      "int8": {
+        "int8_mAP50": 0.9717,
+        "int8_mAP50_95": 0.7364
+      }
+    },
+    "diagnostics": {
+      "scale_recall": {
+        "small": 0.9094,
+        "medium": 0.9644,
+        "large": 0.9838,
+        "counts": {
+          "small": 684,
+          "medium": 703,
+          "large": 309
+        }
+      },
+      "false_positives": {
+        "bg_images": 243,
+        "bg_fp_images": 13,
+        "bg_fp_boxes": 14,
+        "total_tp": 1604,
+        "total_fp": 84,
+        "total_gt": 1696,
+        "false_alarm_ratio": 0.0498
+      }
+    },
+    "official_fps_str": "20.2 FPS",
+    "fast_fps_str": "103.0 FPS (FP16/b16, 5.10x)",
+    "e2e_accel": {
+      "baseline_b1_fps": 20.2,
+      "best_fps": 103.0,
+      "best_tag": "FP16/b16",
+      "speedup": 5.1,
+      "b1_opt_fps": 21.4
+    }
+  },
+  {
+    "arch": "YOLOv8m",
+    "dataset_cn": "人睡觉",
+    "label": "人睡觉 (YOLOv8m)",
+    "dataset": "PersonSleep",
+    "task": "detect",
+    "imgsz": 640,
+    "file_mb": 49.6,
+    "layers": 23,
+    "params_m": 25.84,
+    "gflops_640": 78.7,
+    "gflops_actual": 78.7,
+    "pure_gpu": {
+      "fp32_b1": {
+        "ms_per_img": 13.077,
+        "p95_ms": 13.165,
+        "p99_ms": 13.275,
+        "fps": 76.5,
+        "vram_mb": 396.5
+      },
+      "fp32_b16": {
+        "ms_per_img": 2.691,
+        "p95_ms": 2.692,
+        "p99_ms": 2.693,
+        "fps": 371.6,
+        "vram_mb": 1311.6
+      },
+      "fp16_b1": {
+        "ms_per_img": 13.226,
+        "p95_ms": 13.287,
+        "p99_ms": 13.392,
+        "fps": 75.6,
+        "vram_mb": 620.4
+      },
+      "fp16_b16": {
+        "ms_per_img": 1.322,
+        "p95_ms": 1.323,
+        "p99_ms": 1.323,
+        "fps": 756.4,
+        "vram_mb": 867.1
+      }
+    },
+    "val_fp32_vs_fp16": {
+      "fp32": {
+        "mAP50": 0.9939,
+        "mAP50_95": 0.8852,
+        "precision": 0.9898,
+        "recall": 0.9909,
+        "val_fps": 308.3,
+        "per_class": {
+          "0": {
+            "ap50": 0.9936,
+            "ap": 0.8845,
+            "p": 0.9855,
+            "r": 0.9865
+          },
+          "2": {
+            "ap50": 0.9942,
+            "ap": 0.8858,
+            "p": 0.9942,
+            "r": 0.9953
+          }
+        }
+      },
+      "fp16": {
+        "mAP50": 0.9939,
+        "mAP50_95": 0.8865,
+        "precision": 0.9898,
+        "recall": 0.9909,
+        "val_fps": 313.1,
+        "per_class": {
+          "0": {
+            "ap50": 0.9936,
+            "ap": 0.8885,
+            "p": 0.9855,
+            "r": 0.9865
+          },
+          "2": {
+            "ap50": 0.9942,
+            "ap": 0.8845,
+            "p": 0.9942,
+            "r": 0.9953
+          }
+        }
+      },
+      "fp16_mAP50_delta": 0.0,
+      "fp16_mAP50_95_delta": 0.0013,
+      "int8": {
+        "int8_mAP50": 0.9938,
+        "int8_mAP50_95": 0.8432
+      }
+    },
+    "diagnostics": {
+      "scale_recall": {
+        "small": 0.9951,
+        "medium": 0.9972,
+        "large": 1.0,
+        "counts": {
+          "small": 204,
+          "medium": 722,
+          "large": 296
+        }
+      },
+      "false_positives": {
+        "bg_images": 23,
+        "bg_fp_images": 1,
+        "bg_fp_boxes": 3,
+        "total_tp": 1219,
+        "total_fp": 20,
+        "total_gt": 1222,
+        "false_alarm_ratio": 0.0161
+      }
+    },
+    "official_fps_str": "27.2 FPS",
+    "fast_fps_str": "259.2 FPS (FP16/b16, 9.53x)",
+    "e2e_accel": {
+      "baseline_b1_fps": 27.2,
+      "best_fps": 259.2,
+      "best_tag": "FP16/b16",
+      "speedup": 9.53,
+      "b1_opt_fps": 29.6
+    }
+  },
+  {
+    "arch": "YOLOv8m",
+    "dataset_cn": "人工作服",
+    "label": "人工作服 (YOLOv8m)",
+    "dataset": "WorkclothesHelmet",
+    "task": "detect",
+    "imgsz": 640,
+    "file_mb": 49.6,
+    "layers": 23,
+    "params_m": 25.84,
+    "gflops_640": 78.7,
+    "gflops_actual": 78.7,
+    "pure_gpu": {
+      "fp32_b1": {
+        "ms_per_img": 13.272,
+        "p95_ms": 13.329,
+        "p99_ms": 13.402,
+        "fps": 75.3,
+        "vram_mb": 396.5
+      },
+      "fp32_b16": {
+        "ms_per_img": 2.69,
+        "p95_ms": 2.691,
+        "p99_ms": 2.691,
+        "fps": 371.7,
+        "vram_mb": 1311.6
+      },
+      "fp16_b1": {
+        "ms_per_img": 13.332,
+        "p95_ms": 13.377,
+        "p99_ms": 13.536,
+        "fps": 75.0,
+        "vram_mb": 626.3
+      },
+      "fp16_b16": {
+        "ms_per_img": 1.319,
+        "p95_ms": 1.319,
+        "p99_ms": 1.32,
+        "fps": 758.2,
+        "vram_mb": 865.8
+      }
+    },
+    "val_fp32_vs_fp16": {
+      "fp32": {
+        "mAP50": 0.989,
+        "mAP50_95": 0.8689,
+        "precision": 0.9854,
+        "recall": 0.9799,
+        "val_fps": 313.4,
+        "per_class": {
+          "0": {
+            "ap50": 0.9947,
+            "ap": 0.9412,
+            "p": 0.9922,
+            "r": 0.9867
+          },
+          "2": {
+            "ap50": 0.9936,
+            "ap": 0.9277,
+            "p": 0.9867,
+            "r": 0.9912
+          },
+          "3": {
+            "ap50": 0.9834,
+            "ap": 0.8002,
+            "p": 0.9808,
+            "r": 0.9685
+          },
+          "8": {
+            "ap50": 0.9841,
+            "ap": 0.8066,
+            "p": 0.982,
+            "r": 0.9731
+          }
+        }
+      },
+      "fp16": {
+        "mAP50": 0.9891,
+        "mAP50_95": 0.866,
+        "precision": 0.9861,
+        "recall": 0.9805,
+        "val_fps": 304.6,
+        "per_class": {
+          "0": {
+            "ap50": 0.9947,
+            "ap": 0.9407,
+            "p": 0.9923,
+            "r": 0.9867
+          },
+          "2": {
+            "ap50": 0.9935,
+            "ap": 0.9249,
+            "p": 0.9867,
+            "r": 0.9912
+          },
+          "3": {
+            "ap50": 0.984,
+            "ap": 0.7943,
+            "p": 0.9835,
+            "r": 0.9711
+          },
+          "8": {
+            "ap50": 0.9841,
+            "ap": 0.8041,
+            "p": 0.9817,
+            "r": 0.9731
+          }
+        }
+      },
+      "fp16_mAP50_delta": 0.0001,
+      "fp16_mAP50_95_delta": -0.0029,
+      "int8": {
+        "int8_mAP50": 0.9877,
+        "int8_mAP50_95": 0.7897
+      }
+    },
+    "diagnostics": {
+      "scale_recall": {
+        "small": 0.9742,
+        "medium": 0.9946,
+        "large": 0.9962,
+        "counts": {
+          "small": 1007,
+          "medium": 933,
+          "large": 260
+        }
+      },
+      "false_positives": {
+        "bg_images": 2,
+        "bg_fp_images": 0,
+        "bg_fp_boxes": 0,
+        "total_tp": 2168,
+        "total_fp": 59,
+        "total_gt": 2200,
+        "false_alarm_ratio": 0.0265
+      }
+    },
+    "official_fps_str": "25.0 FPS",
+    "fast_fps_str": "210.5 FPS (FP16/b16, 8.42x)",
+    "e2e_accel": {
+      "baseline_b1_fps": 25.0,
+      "best_fps": 210.5,
+      "best_tag": "FP16/b16",
+      "speedup": 8.42,
+      "b1_opt_fps": 27.5
+    }
+  },
+  {
+    "arch": "YOLO11m",
+    "dataset_cn": "皮带原版",
+    "label": "皮带原版 (YOLO11m)",
+    "dataset": "PiDaiYuanBan",
+    "task": "detect",
+    "imgsz": 640,
+    "file_mb": 38.6,
+    "layers": 24,
+    "params_m": 20.04,
+    "gflops_640": 67.7,
+    "gflops_actual": 67.7,
+    "pure_gpu": {
+      "fp32_b1": {
+        "ms_per_img": 16.468,
+        "p95_ms": 16.383,
+        "p99_ms": 21.017,
+        "fps": 60.7,
+        "vram_mb": 343.8
+      },
+      "fp32_b16": {
+        "ms_per_img": 2.593,
+        "p95_ms": 2.595,
+        "p99_ms": 2.595,
+        "fps": 385.7,
+        "vram_mb": 1539.0
+      },
+      "fp16_b1": {
+        "ms_per_img": 17.02,
+        "p95_ms": 19.015,
+        "p99_ms": 19.086,
+        "fps": 58.8,
+        "vram_mb": 556.2
+      },
+      "fp16_b16": {
+        "ms_per_img": 1.36,
+        "p95_ms": 1.361,
+        "p99_ms": 1.361,
+        "fps": 735.3,
+        "vram_mb": 908.8
+      }
+    },
+    "val_fp32_vs_fp16": {
+      "fp32": {
+        "mAP50": 0.9866,
+        "mAP50_95": 0.9145,
+        "precision": 0.976,
+        "recall": 0.9693,
+        "val_fps": 338.9,
+        "per_class": {
+          "0": {
+            "ap50": 0.9948,
+            "ap": 0.9629,
+            "p": 0.9914,
+            "r": 0.9944
+          },
+          "1": {
+            "ap50": 0.9949,
+            "ap": 0.9361,
+            "p": 0.9956,
+            "r": 1.0
+          },
+          "2": {
+            "ap50": 0.995,
+            "ap": 0.977,
+            "p": 0.9567,
+            "r": 1.0
+          },
+          "3": {
+            "ap50": 0.9948,
+            "ap": 0.9417,
+            "p": 0.989,
+            "r": 0.99
+          },
+          "4": {
+            "ap50": 0.9552,
+            "ap": 0.7244,
+            "p": 0.9244,
+            "r": 0.8468
+          },
+          "5": {
+            "ap50": 0.9684,
+            "ap": 0.7981,
+            "p": 0.9878,
+            "r": 0.9231
+          },
+          "6": {
+            "ap50": 0.995,
+            "ap": 0.995,
+            "p": 0.963,
+            "r": 1.0
+          },
+          "7": {
+            "ap50": 0.995,
+            "ap": 0.9808,
+            "p": 1.0,
+            "r": 1.0
+          }
+        }
+      },
+      "fp16": {
+        "mAP50": 0.9866,
+        "mAP50_95": 0.9151,
+        "precision": 0.9762,
+        "recall": 0.9688,
+        "val_fps": 53.1,
+        "per_class": {
+          "0": {
+            "ap50": 0.9948,
+            "ap": 0.9609,
+            "p": 0.9915,
+            "r": 0.9944
+          },
+          "1": {
+            "ap50": 0.9949,
+            "ap": 0.9381,
+            "p": 0.9956,
+            "r": 1.0
+          },
+          "2": {
+            "ap50": 0.995,
+            "ap": 0.986,
+            "p": 0.9576,
+            "r": 1.0
+          },
+          "3": {
+            "ap50": 0.9948,
+            "ap": 0.9392,
+            "p": 0.9892,
+            "r": 0.9899
+          },
+          "4": {
+            "ap50": 0.9551,
+            "ap": 0.726,
+            "p": 0.9245,
+            "r": 0.8434
+          },
+          "5": {
+            "ap50": 0.9684,
+            "ap": 0.7973,
+            "p": 0.9878,
+            "r": 0.9224
+          },
+          "6": {
+            "ap50": 0.995,
+            "ap": 0.995,
+            "p": 0.9635,
+            "r": 1.0
+          },
+          "7": {
+            "ap50": 0.995,
+            "ap": 0.9784,
+            "p": 1.0,
+            "r": 1.0
+          }
+        }
+      },
+      "fp16_mAP50_delta": 0.0,
+      "fp16_mAP50_95_delta": 0.0006,
+      "int8": {
+        "int8_mAP50": 0.985,
+        "int8_mAP50_95": 0.8759
+      }
+    },
+    "diagnostics": {
+      "scale_recall": {
+        "small": 0.9845,
+        "medium": 0.9844,
+        "large": 0.9918,
+        "counts": {
+          "small": 2262,
+          "medium": 1477,
+          "large": 612
+        }
+      },
+      "false_positives": {
+        "bg_images": 0,
+        "bg_fp_images": 0,
+        "bg_fp_boxes": 0,
+        "total_tp": 4288,
+        "total_fp": 113,
+        "total_gt": 4351,
+        "false_alarm_ratio": 0.0257
+      }
+    },
+    "official_fps_str": "24.7 FPS",
+    "fast_fps_str": "218.4 FPS (FP16/b16, 8.84x)",
+    "e2e_accel": {
+      "baseline_b1_fps": 24.7,
+      "best_fps": 218.4,
+      "best_tag": "FP16/b16",
+      "speedup": 8.84,
+      "b1_opt_fps": 30.1
+    }
+  },
+  {
+    "arch": "YOLOv9e",
+    "dataset_cn": "探水后上杆钻机",
+    "label": "探水后上杆钻机 (YOLOv9e)",
+    "dataset": "TanShuiHouShangGan",
+    "task": "detect",
+    "imgsz": 960,
+    "file_mb": 111.8,
+    "layers": 43,
+    "params_m": 57.29,
+    "gflops_640": 188.6,
+    "gflops_actual": 424.3,
+    "pure_gpu": {
+      "fp32_b1": {
+        "ms_per_img": 50.237,
+        "p95_ms": 50.268,
+        "p99_ms": 53.926,
+        "fps": 19.9,
+        "vram_mb": 1741.0
+      },
+      "fp32_b16": {
+        "ms_per_img": 20.36,
+        "p95_ms": 20.364,
+        "p99_ms": 20.364,
+        "fps": 49.1,
+        "vram_mb": 17388.2
+      },
+      "fp16_b1": {
+        "ms_per_img": 52.059,
+        "p95_ms": 52.43,
+        "p99_ms": 53.182,
+        "fps": 19.2,
+        "vram_mb": 1346.5
+      },
+      "fp16_b16": {
+        "ms_per_img": 10.996,
+        "p95_ms": 11.0,
+        "p99_ms": 11.0,
+        "fps": 90.9,
+        "vram_mb": 9966.8
+      }
+    },
+    "val_fp32_vs_fp16": {
+      "fp32": {
+        "mAP50": 0.8263,
+        "mAP50_95": 0.6334,
+        "precision": 0.9235,
+        "recall": 0.7816,
+        "val_fps": 74.0,
+        "per_class": {
+          "0": {
+            "ap50": 0.8834,
+            "ap": 0.7283,
+            "p": 0.9971,
+            "r": 0.8254
+          },
+          "1": {
+            "ap50": 0.9836,
+            "ap": 0.78,
+            "p": 0.842,
+            "r": 1.0
+          },
+          "2": {
+            "ap50": 0.612,
+            "ap": 0.3918,
+            "p": 0.9314,
+            "r": 0.5193
+          }
+        }
+      },
+      "fp16": {
+        "mAP50": 0.8263,
+        "mAP50_95": 0.6328,
+        "precision": 0.9221,
+        "recall": 0.7816,
+        "val_fps": 116.1,
+        "per_class": {
+          "0": {
+            "ap50": 0.8833,
+            "ap": 0.7266,
+            "p": 0.9974,
+            "r": 0.8254
+          },
+          "1": {
+            "ap50": 0.9836,
+            "ap": 0.7809,
+            "p": 0.8422,
+            "r": 1.0
+          },
+          "2": {
+            "ap50": 0.6121,
+            "ap": 0.3909,
+            "p": 0.9266,
+            "r": 0.5194
+          }
+        }
+      },
+      "fp16_mAP50_delta": 0.0,
+      "fp16_mAP50_95_delta": -0.0006,
+      "int8": {
+        "int8_mAP50": 0.8196,
+        "int8_mAP50_95": 0.6293
+      }
+    },
+    "diagnostics": {
+      "scale_recall": {
+        "small": 0.3478,
+        "medium": 0.6957,
+        "large": 0.7796,
+        "counts": {
+          "small": 23,
+          "medium": 483,
+          "large": 313
+        }
+      },
+      "false_positives": {
+        "bg_images": 2,
+        "bg_fp_images": 0,
+        "bg_fp_boxes": 0,
+        "total_tp": 588,
+        "total_fp": 41,
+        "total_gt": 819,
+        "false_alarm_ratio": 0.0652
+      }
+    },
+    "official_fps_str": "14.5 FPS",
+    "fast_fps_str": "119.4 FPS (FP16/b16, 8.23x)",
+    "e2e_accel": {
+      "baseline_b1_fps": 14.5,
+      "best_fps": 119.4,
+      "best_tag": "FP16/b16",
+      "speedup": 8.23,
+      "b1_opt_fps": 17.5
+    }
+  },
+  {
+    "arch": "YOLO11m",
+    "dataset_cn": "风门开关",
+    "label": "风门开关 (YOLO11m)",
+    "dataset": "FengMenKaiGuan",
+    "task": "detect",
+    "imgsz": 640,
+    "file_mb": 38.6,
+    "layers": 24,
+    "params_m": 20.03,
+    "gflops_640": 67.6,
+    "gflops_actual": 67.6,
+    "pure_gpu": {
+      "fp32_b1": {
+        "ms_per_img": 17.231,
+        "p95_ms": 17.712,
+        "p99_ms": 18.735,
+        "fps": 58.0,
+        "vram_mb": 343.8
+      },
+      "fp32_b16": {
+        "ms_per_img": 2.598,
+        "p95_ms": 2.6,
+        "p99_ms": 2.6,
+        "fps": 384.9,
+        "vram_mb": 1539.0
+      },
+      "fp16_b1": {
+        "ms_per_img": 17.492,
+        "p95_ms": 17.542,
+        "p99_ms": 17.602,
+        "fps": 57.2,
+        "vram_mb": 548.5
+      },
+      "fp16_b16": {
+        "ms_per_img": 1.372,
+        "p95_ms": 1.381,
+        "p99_ms": 1.399,
+        "fps": 728.9,
+        "vram_mb": 907.5
+      }
+    },
+    "val_fp32_vs_fp16": {
+      "fp32": {
+        "mAP50": 0.9947,
+        "mAP50_95": 0.9895,
+        "precision": 0.9949,
+        "recall": 0.9959,
+        "val_fps": 314.5,
+        "per_class": {
+          "0": {
+            "ap50": 0.9944,
+            "ap": 0.985,
+            "p": 0.9916,
+            "r": 1.0
+          },
+          "1": {
+            "ap50": 0.995,
+            "ap": 0.994,
+            "p": 0.9981,
+            "r": 0.9919
+          }
+        }
+      },
+      "fp16": {
+        "mAP50": 0.9947,
+        "mAP50_95": 0.9895,
+        "precision": 0.9948,
+        "recall": 0.9959,
+        "val_fps": 64.9,
+        "per_class": {
+          "0": {
+            "ap50": 0.9944,
+            "ap": 0.985,
+            "p": 0.9916,
+            "r": 1.0
+          },
+          "1": {
+            "ap50": 0.995,
+            "ap": 0.9939,
+            "p": 0.998,
+            "r": 0.9919
+          }
+        }
+      },
+      "fp16_mAP50_delta": 0.0,
+      "fp16_mAP50_95_delta": 0.0,
+      "int8": {
+        "int8_mAP50": 0.9938,
+        "int8_mAP50_95": 0.9824
+      }
+    },
+    "diagnostics": {
+      "scale_recall": {
+        "small": null,
+        "medium": 0.9722,
+        "large": 1.0,
+        "counts": {
+          "small": 0,
+          "medium": 36,
+          "large": 457
+        }
+      },
+      "false_positives": {
+        "bg_images": 11,
+        "bg_fp_images": 1,
+        "bg_fp_boxes": 1,
+        "total_tp": 492,
+        "total_fp": 3,
+        "total_gt": 493,
+        "false_alarm_ratio": 0.0061
+      }
+    },
+    "official_fps_str": "25.0 FPS",
+    "fast_fps_str": "274.2 FPS (FP32/b16, 10.97x)",
+    "e2e_accel": {
+      "baseline_b1_fps": 25.0,
+      "best_fps": 274.2,
+      "best_tag": "FP32/b16",
+      "speedup": 10.97,
+      "b1_opt_fps": 30.5
+    }
+  },
+  {
+    "arch": "YOLO11m",
+    "dataset_cn": "传感器",
+    "label": "传感器 (YOLO11m)",
+    "dataset": "ChuanGanQi",
+    "task": "detect",
+    "imgsz": 640,
+    "file_mb": 38.6,
+    "layers": 24,
+    "params_m": 20.03,
+    "gflops_640": 67.7,
+    "gflops_actual": 67.7,
+    "pure_gpu": {
+      "fp32_b1": {
+        "ms_per_img": 18.914,
+        "p95_ms": 21.337,
+        "p99_ms": 22.558,
+        "fps": 52.9,
+        "vram_mb": 343.8
+      },
+      "fp32_b16": {
+        "ms_per_img": 2.594,
+        "p95_ms": 2.595,
+        "p99_ms": 2.595,
+        "fps": 385.5,
+        "vram_mb": 1539.0
+      },
+      "fp16_b1": {
+        "ms_per_img": 21.594,
+        "p95_ms": 21.674,
+        "p99_ms": 21.71,
+        "fps": 46.3,
+        "vram_mb": 549.1
+      },
+      "fp16_b16": {
+        "ms_per_img": 1.389,
+        "p95_ms": 1.462,
+        "p99_ms": 1.511,
+        "fps": 719.9,
+        "vram_mb": 908.0
+      }
+    },
+    "val_fp32_vs_fp16": {
+      "fp32": {
+        "mAP50": 0.995,
+        "mAP50_95": 0.966,
+        "precision": 0.9984,
+        "recall": 1.0,
+        "val_fps": 366.7,
+        "per_class": {
+          "0": {
+            "ap50": 0.995,
+            "ap": 0.9899,
+            "p": 0.9993,
+            "r": 1.0
+          },
+          "1": {
+            "ap50": 0.995,
+            "ap": 0.9132,
+            "p": 0.9998,
+            "r": 1.0
+          },
+          "2": {
+            "ap50": 0.995,
+            "ap": 0.995,
+            "p": 0.9961,
+            "r": 1.0
+          }
+        }
+      },
+      "fp16": {
+        "mAP50": 0.995,
+        "mAP50_95": 0.9645,
+        "precision": 0.9984,
+        "recall": 1.0,
+        "val_fps": 95.0,
+        "per_class": {
+          "0": {
+            "ap50": 0.995,
+            "ap": 0.9887,
+            "p": 0.9993,
+            "r": 1.0
+          },
+          "1": {
+            "ap50": 0.995,
+            "ap": 0.9097,
+            "p": 0.9998,
+            "r": 1.0
+          },
+          "2": {
+            "ap50": 0.995,
+            "ap": 0.995,
+            "p": 0.9961,
+            "r": 1.0
+          }
+        }
+      },
+      "fp16_mAP50_delta": 0.0,
+      "fp16_mAP50_95_delta": -0.0015,
+      "int8": {
+        "int8_mAP50": 0.995,
+        "int8_mAP50_95": 0.915
+      }
+    },
+    "diagnostics": {
+      "scale_recall": {
+        "small": 1.0,
+        "medium": 1.0,
+        "large": 1.0,
+        "counts": {
+          "small": 377,
+          "medium": 536,
+          "large": 288
+        }
+      },
+      "false_positives": {
+        "bg_images": 0,
+        "bg_fp_images": 0,
+        "bg_fp_boxes": 0,
+        "total_tp": 1201,
+        "total_fp": 1,
+        "total_gt": 1201,
+        "false_alarm_ratio": 0.0008
+      }
+    },
+    "official_fps_str": "25.4 FPS",
+    "fast_fps_str": "236.7 FPS (FP32/b16, 9.32x)",
+    "e2e_accel": {
+      "baseline_b1_fps": 25.4,
+      "best_fps": 236.7,
+      "best_tag": "FP32/b16",
+      "speedup": 9.32,
+      "b1_opt_fps": 26.9
+    }
+  },
+  {
+    "arch": "YOLOv8l-OBB",
+    "dataset_cn": "探水前上杆",
+    "label": "探水前上杆 (YOLOv8l-OBB)",
+    "dataset": "TS_Front_V2",
+    "task": "obb",
+    "imgsz": 640,
+    "file_mb": 85.2,
+    "layers": 23,
+    "params_m": 44.46,
+    "gflops_640": 168.5,
+    "gflops_actual": 168.5,
+    "pure_gpu": {
+      "fp32_b1": {
+        "ms_per_img": 17.534,
+        "p95_ms": 18.025,
+        "p99_ms": 18.06,
+        "fps": 57.0,
+        "vram_mb": 647.9
+      },
+      "fp32_b16": {
+        "ms_per_img": 4.336,
+        "p95_ms": 4.338,
+        "p99_ms": 4.339,
+        "fps": 230.6,
+        "vram_mb": 2030.4
+      },
+      "fp16_b1": {
+        "ms_per_img": 17.213,
+        "p95_ms": 17.274,
+        "p99_ms": 17.371,
+        "fps": 58.1,
+        "vram_mb": 915.8
+      },
+      "fp16_b16": {
+        "ms_per_img": 2.245,
+        "p95_ms": 2.303,
+        "p99_ms": 2.434,
+        "fps": 445.4,
+        "vram_mb": 1373.8
+      }
+    },
+    "val_fp32_vs_fp16": {
+      "fp32": {
+        "mAP50": 0.9949,
+        "mAP50_95": 0.9731,
+        "precision": 0.9966,
+        "recall": 0.9962,
+        "val_fps": 165.5,
+        "per_class": {
+          "0": {
+            "ap50": 0.995,
+            "ap": 0.9681,
+            "p": 0.9968,
+            "r": 1.0
+          },
+          "1": {
+            "ap50": 0.995,
+            "ap": 0.9736,
+            "p": 1.0,
+            "r": 0.9982
+          },
+          "2": {
+            "ap50": 0.9946,
+            "ap": 0.9775,
+            "p": 0.9929,
+            "r": 0.9905
+          }
+        }
+      },
+      "fp16": {
+        "mAP50": 0.9949,
+        "mAP50_95": 0.9731,
+        "precision": 0.9966,
+        "recall": 0.9962,
+        "val_fps": 176.4,
+        "per_class": {
+          "0": {
+            "ap50": 0.995,
+            "ap": 0.9682,
+            "p": 0.9968,
+            "r": 1.0
+          },
+          "1": {
+            "ap50": 0.995,
+            "ap": 0.9736,
+            "p": 1.0,
+            "r": 0.9982
+          },
+          "2": {
+            "ap50": 0.9946,
+            "ap": 0.9775,
+            "p": 0.9929,
+            "r": 0.9905
+          }
+        }
+      },
+      "fp16_mAP50_delta": 0.0,
+      "fp16_mAP50_95_delta": 0.0,
+      "int8": {
+        "int8_mAP50": 0.9949,
+        "int8_mAP50_95": 0.969
+      }
+    },
+    "diagnostics": {
+      "scale_recall": {
+        "small": null,
+        "medium": 1.0,
+        "large": 0.9974,
+        "counts": {
+          "small": 0,
+          "medium": 23,
+          "large": 1143
+        }
+      },
+      "false_positives": {
+        "bg_images": 0,
+        "bg_fp_images": 0,
+        "bg_fp_boxes": 0,
+        "total_tp": 1163,
+        "total_fp": 16,
+        "total_gt": 1166,
+        "false_alarm_ratio": 0.0136
+      }
+    },
+    "official_fps_str": "40.6 FPS (val b16)",
+    "fast_fps_str": "40.6 FPS (OBB标准流水线)"
+  }
+]
