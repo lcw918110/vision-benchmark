@@ -18,6 +18,7 @@
 | [`docs/dataset-full-inventory.md`](./docs/dataset-full-inventory.md) | **全量原始数据集统计清单**（`/home/jykj/Dataset/` 下 **42 个业务 / 1,979,306 张 / 5,831,781 框 / 878.3 GB** 的逐集详细统计、类别分布、尺度分布与数据质量异常清单） |
 | [`docs/backup-checklist.md`](./docs/backup-checklist.md) | **重装前备份清单**（哪些内容已由 git 保护、哪些必须另存、可重建项与敏感凭据处理方式） |
 | [`docs/repo-boundary.md`](./docs/repo-boundary.md) | **仓库边界清单**（数据集、权重、凭据为何不入库及 `.gitignore` 拦截规则，含校验命令） |
+| [`docs/sync-to-another-machine.md`](./docs/sync-to-another-machine.md) | **同步到另一台机器的绝对路径清单**（不在仓库内但有价值的内容、rsync 命令与权重完整性校验） |
 | [`configs/registry.py`](./configs/registry.py) | **全项目代码唯一配置真源**（集中声明 11 个数据集路径、8 个模型权重及基准参数，供所有评测与同步脚本调用） |
 
 ---
