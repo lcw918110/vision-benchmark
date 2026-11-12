@@ -16,14 +16,15 @@ git clone git@github.com:lcw918110/vision-benchmark.git
 **9 个权重的路径与 sha256 清单已入库**（`output/dataset/weights-manifest.json`），
 拷贝完成后可用它校验完整性，命令见第五节。
 
-**必须同步合计 3.57 GB，按需 0.23 GB。**
+**必须同步合计 11.73 GB，按需 0.23 GB。**
 
 ## 一、必须同步
 
 | 绝对路径 | 体积 | 文件数 | 内容 | 备注 |
 |---|---:|---:|---|---|
 | `/home/jykj/vision-deploy/data/benchmark/standard` | 3.06 GB | 11441 | 11 个标准测试集的图片与标签（5,700 张图 / 17,037 框） | 仓库只存 data.yaml / manifest.json / excluded.txt，图片标签必须单独拷 |
-| `/home/jykj/vision-deploy/models/yolov8/custom` | 521.3 MB | 20 | 9 个业务模型训练成果（含 2 个超 100MB 的权重） | args.yaml 与模型结构 yaml 已入库，.pt 本体需单独拷 |
+| `/home/jykj/vision-deploy/models/yolov8/custom` | 521.3 MB | 20 | 8 个业务模型训练成果（含 2 个超 100MB 的权重） | args.yaml 与模型结构 yaml 已入库，.pt 本体需单独拷 |
+| `/home/jykj/vision-deploy/output/transfer/docker` | 8.16 GB | 3 | 两个 Docker 镜像的 zstd 压缩包（8.3 GB） | docker load 恢复；也可在新机器 docker compose build 重建 |
 
 ## 二、按需同步
 
@@ -87,9 +88,16 @@ EOF
 
 ## 六、环境重建要点
 
-- **Docker 镜像** `vision/yolov8:8.4.99-cu12.8`（18.1 GB）未推送 registry，
-  可在新机器用 `docker compose build` 重建；Dockerfile 与 54 行依赖锁已在仓库
-- 基础镜像 `nvcr.io/nvidia/cuda:12.8.1-runtime-ubuntu22.04` 固定了 SHA256 摘要
+- **Docker 镜像包**已导出到 `output/transfer/docker`（8.3 GB，zstd 压缩，
+  已通过 `zstd -t` 校验），新机器 `docker load` 即可恢复：
+  ```bash
+  zstd -d -c vision-yolov8-8.4.99-cu12.8.tar.zst | docker load
+  zstd -d -c cuda-12.8.1-runtime-ubuntu22.04.tar.zst | docker load
+  ```
+- 也可跳过镜像包，在新机器用 `docker compose build` 重建（需联网拉取约 5.6 GB
+  基础镜像）；Dockerfile 固定了基础镜像 SHA256 摘要，依赖锁 47 行
+- 注意 `docker save` 基础镜像必须用 digest 名：
+  `nvcr.io/nvidia/cuda@sha256:4a801ef9...`，用 tag 名会报 `No such image`
 - **GitHub SSH** 必须走 `ssh.github.com:443`（本机 DNS 把 github.com 解析为
   `127.0.0.1`），配置写在 `~/.ssh/config`
 - 宿主机 Python 3.14 无 torch/ultralytics，评测全部在容器内运行
@@ -99,7 +107,6 @@ EOF
 | 路径 | 体积 | 原因 |
 |---|---:|---|
 | `/home/jykj/vision-deploy/logs` | 20 KB | 运行日志 |
-| `/home/jykj/vision-deploy/output/transfer` | 16 KB | 传输中间产物 |
 | `/home/jykj/.cursor-server` | 2.3 GB | Cursor 远程缓存，可重装 |
 | `/home/jykj/.cache` | 19 MB | 用户缓存 |
-| `/home/jykj/yolov5*` | 11 MB | ultralytics 官方仓库克隆，0 改动 |
+| `/home/jykj/yolov5*` | 11 MB | ultralytics 官方仓库 4 个 tag 克隆（v6.0/v6.1/v6.2/v7.0），0 改动 |

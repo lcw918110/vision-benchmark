@@ -171,6 +171,23 @@ def transfer(rel, dest_root, loose=None):
     return subprocess.run(['bash', '-o', 'pipefail', '-c', cmd]).returncode
 
 
+def transfer_with_retry(rel, dest_root, loose=None, attempts=3):
+    """传输一块，失败自动重试。
+
+    大块要传几十分钟，期间偶发 SSH 断连（Connection reset by peer）很常见，
+    单次失败不该让整块作废。tar 流不支持断点续传，重试会从头传该块，
+    但配合前面的"已一致则跳过"判定，已完成的块不会重复付出代价。
+    """
+    for i in range(1, attempts + 1):
+        rc = transfer(rel, dest_root, loose)
+        if rc == 0:
+            return 0
+        if i < attempts:
+            print(f'  第 {i} 次失败（exit {rc}），10 秒后重试', flush=True)
+            time.sleep(10)
+    return rc
+
+
 def transfer_loose(dest_root, loose):
     print(f'  零散文件 {len(loose)} 个', flush=True)
     if not loose:
@@ -236,7 +253,7 @@ def main():
 
         if not args.verify_only:
             t0 = time.time()
-            rc = transfer(rel, args.dest_root, loose)
+            rc = transfer_with_retry(rel, args.dest_root, loose)
             elapsed = round(time.time() - t0, 1)
             print(f'  transfer exit={rc} elapsed={elapsed}s', flush=True)
             if rc != 0:
