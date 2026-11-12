@@ -11,7 +11,7 @@ git clone git@github.com:lcw918110/vision-benchmark.git
 ```
 
 > 仓库地址：https://github.com/lcw918110/vision-benchmark
-> 当前 HEAD：`ada260f`
+> 当前 HEAD：`629f32c`
 
 **9 个权重的路径与 sha256 清单已入库**（`output/dataset/weights-manifest.json`），
 拷贝完成后可用它校验完整性，命令见第五节。
