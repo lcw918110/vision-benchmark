@@ -105,7 +105,7 @@ def main():
         '```',
         '',
         '> 仓库地址：https://github.com/lcw918110/vision-benchmark',
-        f'> 当前 HEAD：`{rev}`',
+        '> 克隆后可用 `git log -1 --oneline` 查看当时的提交',
         '',
         '**9 个权重的路径与 sha256 清单已入库**（`output/dataset/weights-manifest.json`），',
         '拷贝完成后可用它校验完整性，命令见第五节。',
