@@ -1,0 +1,38 @@
+{
+  "images": 5158,
+  "labels": 5158,
+  "missing_labels": 0,
+  "orphan_labels": 0,
+  "duplicate_image_stems": 0,
+  "boxes": 16716,
+  "valid_boxes": 16716,
+  "empty_labels": 31,
+  "files": 10318,
+  "bytes": 3834339358,
+  "label_issues": {},
+  "class_counts": {
+    "2": 3935,
+    "8": 2107,
+    "3": 5944,
+    "0": 4730
+  },
+  "resolutions": {
+    "1280x720": 1618,
+    "2560x1440": 2158,
+    "1920x1080": 1216,
+    "1280x960": 156,
+    "704x576": 10
+  },
+  "modes": {
+    "RGB": 5158
+  },
+  "formats": {
+    "JPEG": 5158
+  },
+  "dataset_key": "WorkclothesHelmet",
+  "task": "detect",
+  "raw_root": "/home/jykj/Dataset/Hbb/WorkclothesHelmet",
+  "shards": 14,
+  "errors": [],
+  "version": 1
+}

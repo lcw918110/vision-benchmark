@@ -1,0 +1,19 @@
+# 11 个基准数据集全量质检产物校验清单
+# 格式: sha256  字节数  相对路径
+# 校验: python3 scripts/20-benchmark-quality-checksums.py --verify
+
+f4666ed4d868d6c87ee4f04791df484fee5020786db919154f95ca1a3823a0ea        754  ChanYunXiaoMeiZhong/summary.json
+d952ad2628da8fcbde976a0dc1b31ff97dd5e7f8352fc1490154615b3ad9c952        642  ChuanGanQi/summary.json
+2bc3cda362671144a3adba91eea20abddf501955925cc1193a5f498bee475d88        685  FengMenKaiGuan/summary.json
+d95b75a5f5004dc21c97630bcbae4937bc9f21b3089bb9c0caa70e1d4dfd3867        688  HuBangBan/summary.json
+570197a71d4ad9073e3f13f549063c672e86b8db3ce5f596782e3417c44ccea3     103462  PersonHelmet/summary.json
+bc979691732ebfc98a3797bb593fa2a3300f841fd60d7e568d52e3385c9a1c9a        847  PersonSleep/summary.json
+20c0cfb53e254e1bde341b35d6a4efdc638893608e2a2aa777c2ede55c931b01        897  PiDaiYuanBan/summary.json
+5adc82d1b48e87449f8f32d65d07a17fc2347e79badf5c06552fe5fcb8153cf8        722  RenChengHouChe/summary.json
+1334f4353fc1f2a07008b896b9bd4d8013be669497300d0f9aafc58cfa73bf17        744  TS_Front_V2/summary.json
+cfea56c8940d0bd3a281ca8c9ca1efef9684c1710cb97a4831007916dd40dd0c        774  TanShuiHouShangGan/summary.json
+d7f8c253ea810f426aa92377f21f4e2c4b84dd21f55443eed8f0f1c43d0e5be3        690  WorkclothesHelmet/summary.json
+141fa03b8af6b12a68dc6dbb36f4533162a97a6629531bb4332e724586996bc3     220933  report.json
+ffccf86a7447f857dc9bcb75320f7323c736efe4a3a58de6eb1c5a272e03608f      38054  issues.csv
+
+# 文件数 13，合计 369,892 字节

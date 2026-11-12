@@ -1,0 +1,45 @@
+{
+  "images": 31216,
+  "labels": 31216,
+  "missing_labels": 0,
+  "orphan_labels": 0,
+  "duplicate_image_stems": 0,
+  "boxes": 50738,
+  "valid_boxes": 50738,
+  "empty_labels": 4207,
+  "files": 62434,
+  "bytes": 16518775704,
+  "label_issues": {},
+  "class_counts": {
+    "0": 6224,
+    "2": 44514
+  },
+  "resolutions": {
+    "1280x720": 15638,
+    "2560x1440": 5403,
+    "960x544": 21,
+    "960x540": 184,
+    "2730x1536": 113,
+    "1920x1080": 5927,
+    "1300x720": 344,
+    "3200x1800": 75,
+    "2556x1416": 117,
+    "704x576": 905,
+    "2048x1536": 1859,
+    "1440x1080": 86,
+    "1280x960": 245,
+    "800x600": 299
+  },
+  "modes": {
+    "RGB": 31216
+  },
+  "formats": {
+    "JPEG": 31216
+  },
+  "dataset_key": "PersonSleep",
+  "task": "detect",
+  "raw_root": "/home/jykj/Dataset/Hbb/PersonSleep",
+  "shards": 22,
+  "errors": [],
+  "version": 1
+}

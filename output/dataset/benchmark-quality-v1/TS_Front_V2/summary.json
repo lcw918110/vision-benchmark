@@ -1,0 +1,40 @@
+{
+  "images": 265179,
+  "labels": 265179,
+  "missing_labels": 0,
+  "orphan_labels": 0,
+  "duplicate_image_stems": 0,
+  "boxes": 528300,
+  "valid_boxes": 351354,
+  "empty_labels": 0,
+  "files": 530359,
+  "bytes": 104864441270,
+  "label_issues": {
+    "coord_out_of_range": 176946
+  },
+  "class_counts": {
+    "0": 54763,
+    "1": 81198,
+    "2": 215393
+  },
+  "resolutions": {
+    "1920x1080": 49436,
+    "1280x720": 205282,
+    "3072x2048": 2563,
+    "2560x1440": 1208,
+    "1280x960": 3202,
+    "3840x2160": 3488
+  },
+  "modes": {
+    "RGB": 265179
+  },
+  "formats": {
+    "JPEG": 265179
+  },
+  "dataset_key": "TS_Front_V2",
+  "task": "obb",
+  "raw_root": "/home/jykj/Dataset/Obb/TS-Front_V2",
+  "shards": 578,
+  "errors": [],
+  "version": 1
+}

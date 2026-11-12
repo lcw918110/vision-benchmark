@@ -1,0 +1,40 @@
+{
+  "images": 704199,
+  "labels": 704199,
+  "missing_labels": 0,
+  "orphan_labels": 0,
+  "duplicate_image_stems": 0,
+  "boxes": 1471896,
+  "valid_boxes": 1471896,
+  "empty_labels": 7043,
+  "files": 1408400,
+  "bytes": 295787550993,
+  "label_issues": {},
+  "class_counts": {
+    "0": 655326,
+    "2": 581444,
+    "1": 235126
+  },
+  "resolutions": {
+    "1920x1080": 148180,
+    "1280x720": 515093,
+    "2560x1440": 35876,
+    "640x320": 113,
+    "1280x960": 1333,
+    "3840x2160": 953,
+    "2048x1536": 997,
+    "960x540": 1654
+  },
+  "modes": {
+    "RGB": 704199
+  },
+  "formats": {
+    "JPEG": 704199
+  },
+  "dataset_key": "TanShuiHouShangGan",
+  "task": "detect",
+  "raw_root": "/home/jykj/Dataset/Hbb/TanShuiHouShangGan",
+  "shards": 527,
+  "errors": [],
+  "version": 1
+}

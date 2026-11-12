@@ -1,0 +1,49 @@
+{
+  "images": 166048,
+  "labels": 166048,
+  "missing_labels": 0,
+  "orphan_labels": 0,
+  "duplicate_image_stems": 0,
+  "boxes": 1071423,
+  "valid_boxes": 1071422,
+  "empty_labels": 4,
+  "files": 332097,
+  "bytes": 92979849802,
+  "label_issues": {
+    "nonpositive_size": 1
+  },
+  "class_counts": {
+    "1": 96893,
+    "3": 806412,
+    "4": 53676,
+    "0": 62406,
+    "5": 36796,
+    "7": 10159,
+    "2": 181,
+    "6": 4899
+  },
+  "resolutions": {
+    "1280x720": 49740,
+    "640x480": 165,
+    "1920x1080": 84051,
+    "2560x1440": 28820,
+    "3840x2160": 1092,
+    "2688x1520": 1407,
+    "1912x1080": 6,
+    "720x576": 42,
+    "704x576": 523,
+    "700x572": 202
+  },
+  "modes": {
+    "RGB": 166048
+  },
+  "formats": {
+    "JPEG": 166048
+  },
+  "dataset_key": "PiDaiYuanBan",
+  "task": "detect",
+  "raw_root": "/home/jykj/Dataset/Hbb/PiDaiYuanBan",
+  "shards": 274,
+  "errors": [],
+  "version": 1
+}

@@ -31,7 +31,20 @@ output/*
 !output/benchmark/
 output/benchmark/*
 !output/benchmark/arena/
+!output/benchmark/runs/
 output/benchmark/arena/diff_wall/
+
+# 3.1 数据集质检报告：只入库结论与清单，逐分片中间缓存（10MB+）不入库
+!output/dataset/
+output/dataset/*
+!output/dataset/benchmark-quality-v1/
+output/dataset/benchmark-quality-v1/*
+!output/dataset/benchmark-quality-v1/report.json
+!output/dataset/benchmark-quality-v1/issues.csv
+!output/dataset/benchmark-quality-v1/CHECKSUMS.txt
+!output/dataset/benchmark-quality-v1/*/
+output/dataset/benchmark-quality-v1/*/*
+!output/dataset/benchmark-quality-v1/*/summary.json
 
 # 4. 运行时日志與缓存
 logs/

@@ -1,0 +1,37 @@
+{
+  "images": 2299,
+  "labels": 2299,
+  "missing_labels": 0,
+  "orphan_labels": 0,
+  "duplicate_image_stems": 0,
+  "boxes": 6191,
+  "valid_boxes": 6189,
+  "empty_labels": 0,
+  "files": 4600,
+  "bytes": 976211174,
+  "label_issues": {
+    "nonpositive_size": 2
+  },
+  "class_counts": {
+    "0": 2601,
+    "1": 2072,
+    "2": 1516
+  },
+  "resolutions": {
+    "1280x720": 1248,
+    "1920x1080": 676,
+    "2560x1440": 375
+  },
+  "modes": {
+    "RGB": 2299
+  },
+  "formats": {
+    "JPEG": 2299
+  },
+  "dataset_key": "ChuanGanQi",
+  "task": "detect",
+  "raw_root": "/home/jykj/Dataset/Hbb/ChuanGanQi",
+  "shards": 9,
+  "errors": [],
+  "version": 1
+}

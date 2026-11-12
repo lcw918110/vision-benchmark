@@ -1,0 +1,38 @@
+{
+  "images": 14121,
+  "labels": 14121,
+  "missing_labels": 0,
+  "orphan_labels": 0,
+  "duplicate_image_stems": 0,
+  "boxes": 48198,
+  "valid_boxes": 48198,
+  "empty_labels": 1463,
+  "files": 28243,
+  "bytes": 7775399273,
+  "label_issues": {},
+  "class_counts": {
+    "2": 1525,
+    "3": 43956,
+    "4": 2717
+  },
+  "resolutions": {
+    "1920x1080": 8931,
+    "1280x720": 3103,
+    "704x576": 1098,
+    "2560x1440": 533,
+    "1120x626": 175,
+    "1366x768": 281
+  },
+  "modes": {
+    "RGB": 14121
+  },
+  "formats": {
+    "JPEG": 14121
+  },
+  "dataset_key": "HuBangBan",
+  "task": "detect",
+  "raw_root": "/home/jykj/Dataset/Hbb/HuBangBan",
+  "shards": 39,
+  "errors": [],
+  "version": 1
+}

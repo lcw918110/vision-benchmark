@@ -1,0 +1,41 @@
+{
+  "images": 8386,
+  "labels": 8386,
+  "missing_labels": 0,
+  "orphan_labels": 0,
+  "duplicate_image_stems": 0,
+  "boxes": 28651,
+  "valid_boxes": 28651,
+  "empty_labels": 2584,
+  "files": 18249,
+  "bytes": 10235019828,
+  "label_issues": {},
+  "class_counts": {
+    "0": 2467,
+    "1": 828,
+    "2": 11571,
+    "3": 8098,
+    "5": 3832,
+    "8": 675,
+    "9": 584,
+    "4": 596
+  },
+  "resolutions": {
+    "1920x1080": 6673,
+    "1608x884": 1115,
+    "944x444": 470,
+    "1720x960": 128
+  },
+  "modes": {
+    "RGB": 8386
+  },
+  "formats": {
+    "JPEG": 8386
+  },
+  "dataset_key": "RenChengHouChe",
+  "task": "detect",
+  "raw_root": "/home/jykj/Dataset/Hbb/RenChengHouChe",
+  "shards": 13,
+  "errors": [],
+  "version": 1
+}

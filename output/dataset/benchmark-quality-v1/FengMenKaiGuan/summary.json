@@ -1,0 +1,37 @@
+{
+  "images": 19409,
+  "labels": 19409,
+  "missing_labels": 0,
+  "orphan_labels": 0,
+  "duplicate_image_stems": 0,
+  "boxes": 18188,
+  "valid_boxes": 18188,
+  "empty_labels": 1440,
+  "files": 38820,
+  "bytes": 9517941145,
+  "label_issues": {},
+  "class_counts": {
+    "0": 11270,
+    "1": 6918
+  },
+  "resolutions": {
+    "1920x1080": 2840,
+    "2560x1440": 2899,
+    "640x360": 599,
+    "1912x1080": 213,
+    "3840x2160": 65,
+    "1280x720": 12793
+  },
+  "modes": {
+    "RGB": 19409
+  },
+  "formats": {
+    "JPEG": 19409
+  },
+  "dataset_key": "FengMenKaiGuan",
+  "task": "detect",
+  "raw_root": "/home/jykj/Dataset/Hbb/FengMenKaiGuan",
+  "shards": 11,
+  "errors": [],
+  "version": 1
+}

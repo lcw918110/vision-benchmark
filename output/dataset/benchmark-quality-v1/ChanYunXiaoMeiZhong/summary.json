@@ -1,0 +1,41 @@
+{
+  "images": 77076,
+  "labels": 77074,
+  "missing_labels": 0,
+  "orphan_labels": 0,
+  "duplicate_image_stems": 2,
+  "boxes": 60396,
+  "valid_boxes": 60395,
+  "empty_labels": 17838,
+  "files": 154151,
+  "bytes": 36631061099,
+  "label_issues": {
+    "coord_out_of_range": 1
+  },
+  "class_counts": {
+    "0": 28203,
+    "1": 952,
+    "3": 19786,
+    "6": 5349,
+    "7": 6105
+  },
+  "resolutions": {
+    "2560x1440": 11283,
+    "1920x1080": 8877,
+    "3840x2160": 890,
+    "1280x720": 55393,
+    "856x480": 633
+  },
+  "modes": {
+    "RGB": 77076
+  },
+  "formats": {
+    "JPEG": 77076
+  },
+  "dataset_key": "ChanYunXiaoMeiZhong",
+  "task": "detect",
+  "raw_root": "/home/jykj/Dataset/Hbb/ChanYunXiaoMeiZhong",
+  "shards": 10,
+  "errors": [],
+  "version": 1
+}
