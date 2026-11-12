@@ -1,24 +1,64 @@
 # ==============================================================================
 # Git 仓库版本控制边界规划 (.gitignore)
-# 原则：代码、配置、args.yaml、测试集抽样溯源清单(manifest/excluded)、评测结果(JSON/MD)与文档(docs/)入库；
-#      大体积二进制权重(.pt)、标准集原始图片/标签(3.1GB)、测试视频(234MB)、日志与敏感凭据忽略。
+#
+# 原则：**数据集、权重、凭据一律不入仓**。仓库只存放代码、配置、文档、类别定义
+#      与体积很小的统计结论（manifest / excluded / report / summary / issues）。
+#      原始数据与模型体积达数 GB 且多为二进制，git 无法有效增量存储，一旦入库会
+#      永久留在历史里，推送到远程后无法真正删除。
 # ==============================================================================
 
-# 1. 模型权重：忽略大体积二进制权重，但保留 custom/ 下的 args.yaml 与模型配置 .yaml
-models/**/*.pt
-models/**/*.pth
-models/**/*.onnx
-models/**/*.engine
-models/**/*.om
-models/**/*.rknn
-models/**/*.bmodel
+# 1. 全局兜底：任何位置的图片、视频、权重、压缩包、数据库、日志一律忽略。
+#    不依赖具体目录名，新增数据集或模型时也不会漏。
+*.jpg
+*.jpeg
+*.png
+*.bmp
+*.webp
+*.tif
+*.tiff
+*.gif
+*.mp4
+*.avi
+*.mkv
+*.mov
+*.flv
+*.ts
+*.m4v
+*.pt
+*.pth
+*.onnx
+*.engine
+*.om
+*.rknn
+*.bmodel
+*.trt
+*.plan
+*.h5
+*.keras
+*.pb
+*.tflite
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.7z
+*.rar
+*.db
+*.sqlite
+*.sqlite3
+*.log
+*.cache
+
+# 2. 模型权重目录：保留 custom/ 下的 args.yaml 与模型结构 .yaml，
+#    权重本身已由第 1 节扩展名规则拦截；官方预训练目录整体忽略。
 models/yolov8/detect/
 models/yolov8/segment/
 models/yolov8/pose/
 models/yolov8/obb/
 models/yolov8/classify/
+models/**/weights/
 
-# 2. 标准测试集与数据：忽略 3.3GB 原始图片/标签/视频，但保留 standard/* 下的 data.yaml / manifest.json / excluded.txt
+# 3. 数据集目录：只保留体积很小的溯源清单，图片与标签一律不入库
 data/raw/
 data/benchmark/videos/
 data/benchmark/train_sample/
@@ -26,7 +66,7 @@ data/benchmark/standard/*/images/
 data/benchmark/standard/*/labels/
 data/benchmark/standard/*/*.cache
 
-# 3. 评测输出产物：保留 output/benchmark/arena/*.json 与 *.md 供台账同步，忽略可视化大图与临时目录
+# 4. 评测输出产物：保留 output/benchmark/arena/*.json 与 *.md 供台账同步，忽略可视化大图与临时目录
 output/*
 !output/benchmark/
 output/benchmark/*
@@ -34,7 +74,7 @@ output/benchmark/*
 !output/benchmark/runs/
 output/benchmark/arena/diff_wall/
 
-# 3.1 数据集质检报告：只入库结论与清单，逐分片中间缓存（10MB+）不入库
+# 4.1 数据集质检报告：只入库结论与清单，逐分片中间缓存（10MB+）不入库
 !output/dataset/
 output/dataset/*
 !output/dataset/benchmark-quality-v1/
@@ -65,3 +105,23 @@ venv/
 mihomo-linux-amd64-compatible-v1.19.33
 mihomo-linux-amd64-compatible-v1.19.33.gz
 .mihomo/
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+authorized_keys
+known_hosts
+.netrc
+.git-credentials
+.env
+.env.*
+# 代理订阅配置：mihomo 的 config.yaml 含节点与订阅凭据，只可能出现在这些位置
+**/mihomo/config.yaml
+
+# 7. 数据集与权重备份目录（大体积二进制，永远不入库）
+backup/
+backups/
+backup-labels/
+weights/
+checkpoints/
+runs/
