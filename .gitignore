@@ -85,6 +85,8 @@ output/dataset/benchmark-quality-v1/*
 !output/dataset/benchmark-quality-v1/*/
 output/dataset/benchmark-quality-v1/*/*
 !output/dataset/benchmark-quality-v1/*/summary.json
+# 权重备份清单：只有路径与 sha256，不含权重本体，用于校验备份是否完整
+!output/dataset/weights-manifest.json
 
 # 4. 运行时日志與缓存
 logs/

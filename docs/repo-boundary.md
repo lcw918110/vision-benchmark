@@ -32,15 +32,19 @@
 
 | 路径 | 体积 | 内容 |
 |---|---:|---|
-| `models/yolov8/custom/**/*.pt` | 521 MB | 8 个业务模型训练成果 |
+| `models/yolov8/custom/**/*.pt` | 527 MB | 9 个业务模型训练成果 |
 | `models/yolov8/{detect,segment,pose,obb,classify}/` | 6.2 MB | 官方预训练权重 |
 | `models/**/weights/` | — | 训练过程权重 |
+| `/mnt/bak/CoreYoloU_runs/**/*.pt`（仓库外） | 2.5 GB | 82 个训练产物，11 个数据集 + 统一模型 |
 
 **入库的只有**：每个模型目录下的 `args.yaml`（训练参数）与模型结构 `.yaml`
 （如 `yolov11.yaml`），合计 12 个文件，用于复现训练配置。
 
 单个权重最大 111.8 MB（`探水后上杆-yolov9e-960.pt`），超过 GitHub 100 MB
 单文件限制，即便想入库也必须走 Git LFS。
+
+**入库的例外**：`output/dataset/weights-manifest.json`（28 KB）只含 91 个权重的
+路径与 sha256，不含权重本体，用于校验备份是否完整。
 
 ## 三、凭据与密钥（严禁入库）
 
@@ -65,7 +69,7 @@
 
 ## 五、当前仓库实际内容
 
-截至最新提交，仓库共跟踪文件 133 个，最大的 5 个是：
+截至最新提交，仓库共跟踪文件 134 个，最大的 5 个是：
 
 | 文件 | 体积 |
 |---|---:|

@@ -3,7 +3,7 @@
 本文件列出**不在 git 版本控制内**的本地内容。仓库代码、文档、脚本、
 质检报告与全部类别定义已推送到 GitHub，无需额外备份。
 
-清单合计约 **8.18 GB**（含可重建项）。
+清单合计约 **10.76 GB**（含可重建项），其中**必须备份 8.24 GB**。
 
 > 哪些内容**有意不入库**、为什么，见 [`repo-boundary.md`](./repo-boundary.md)。
 > 本文件解决「重装前要拷什么」，那份文件解决「什么不该进 git」。
@@ -14,7 +14,54 @@
 |---|---:|---|
 | `vision-deploy/data/benchmark/standard` | 3134.8 MB | 11 个标准测试集图片+标签（5,700 张） |
 | `ZJH/PiDaiYuanBan/luanming-7004` | 2148.2 MB | 皮带队原版 3502 图 + 3502 标签 |
-| `vision-deploy/models/yolov8/custom` | 521.3 MB | 8 个训练好的 .pt 权重 |
+| **`/mnt/bak/CoreYoloU_runs`** | **2534.4 MB** | **11 个业务数据集的训练产物，82 个权重** |
+| `vision-deploy/models/yolov8/custom` | 521.3 MB | 8 个业务模型训练成果 |
+
+### 模型权重全量清单（91 个 / 3.00 GB）
+
+权重分散在两个位置，**互不重复**（已用 sha256 逐文件比对，仅 3 组是同目录内
+`best.pt` 与 `last.pt` 相同，属正常）。明细见
+`output/dataset/weights-manifest.json`（含每个文件的 sha256，可用于校验备份完整性）。
+
+| 分组 | 权重数 | 体积 |
+|---|---:|---:|
+| `/mnt/bak/CoreYoloU_runs/_keep_best` | 19 | 790.1 MB |
+| `/mnt/bak/CoreYoloU_runs/full` | 24 | 649.1 MB |
+| `models/yolov8/custom` | 9 | 527.5 MB |
+| `/mnt/bak/CoreYoloU_runs/unified_100k` | 9 | 441.8 MB |
+| `/mnt/bak/CoreYoloU_runs/s640` | 8 | 155.4 MB |
+| `/mnt/bak/CoreYoloU_runs/mix` | 8 | 155.4 MB |
+| `/mnt/bak/CoreYoloU_runs/unified_50k` | 2 | 115.1 MB |
+| `/mnt/bak/CoreYoloU_runs/unified_20k` | 4 | 77.6 MB |
+| `/mnt/bak/CoreYoloU_runs/ft320` | 4 | 77.5 MB |
+| `/mnt/bak/CoreYoloU_runs/full_s640` | 2 | 38.8 MB |
+| `/mnt/bak/CoreYoloU_runs/unified_50k_strat` | 2 | 38.8 MB |
+
+> `/mnt/bak` 是**独立挂载盘**（1.5T，已用 2.6G）。重装系统时若只格式化系统盘，
+> 数据可能还在；但若整盘重装或换机，必须单独拷贝。这批权重是 11 个数据集
+> （`full/` 下按数据集分目录）与统一模型（`unified_*`）的训练成果，无法从
+> 仓库重建，只能重新训练。
+
+校验备份是否完整：
+
+```bash
+cd /home/jykj/vision-deploy
+python3 - <<'EOF'
+import json, hashlib, pathlib
+m = json.load(open('output/dataset/weights-manifest.json'))
+bad = 0
+for r in m['files']:
+    p = pathlib.Path(r['path'])
+    if not p.exists():
+        print('缺失', p); bad += 1; continue
+    h = hashlib.sha256()
+    with p.open('rb') as f:
+        for c in iter(lambda: f.read(4<<20), b''): h.update(c)
+    if h.hexdigest() != r['sha256']:
+        print('不一致', p); bad += 1
+print(f'{len(m["files"])} 个权重，异常 {bad} 个')
+EOF
+```
 
 ## 二、按需备份
 
