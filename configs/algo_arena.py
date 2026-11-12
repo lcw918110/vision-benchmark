@@ -46,6 +46,32 @@ ALL_ARCH_MODELS = [
 ]
 
 
+def _worker_result(process, queue, timeout=7200):
+    """子进程异常或超时时停止等待，避免自动化任务无限挂起。"""
+    import queue as queue_module
+    deadline = time.monotonic() + timeout
+    while True:
+        remaining = deadline - time.monotonic()
+        if remaining <= 0:
+            process.terminate()
+            process.join()
+            raise TimeoutError(f"评测子进程超过 {timeout} 秒")
+        try:
+            result = queue.get(timeout=min(1.0, remaining))
+            process.join(timeout=10)
+            if process.is_alive():
+                process.terminate()
+                process.join()
+                raise RuntimeError("评测子进程返回结果后未退出")
+            if process.exitcode != 0:
+                raise RuntimeError(f"评测子进程失败: exit={process.exitcode}")
+            return result
+        except queue_module.Empty:
+            if not process.is_alive():
+                process.join()
+                raise RuntimeError(f"评测子进程未返回结果: exit={process.exitcode}")
+
+
 def _shm_mb():
     try:
         st = os.statvfs("/dev/shm")
@@ -681,8 +707,7 @@ def run_arch_matrix(out_dir):
         q = ctx.Queue()
         p = ctx.Process(target=_arch_worker, args=(spec, q))
         p.start()
-        r = q.get()
-        p.join()
+        r = _worker_result(p, q)
         rows.append(r)
 
     reg_by_key = {m["dataset_key"]: m for m in get_active_models()}
@@ -759,8 +784,7 @@ def run_head_to_head(out_dir, conf=0.25, iou=0.7):
             job = (ds_label, yaml_path, cand_label, weights, imgsz, shared_classes, conf, iou)
             p = ctx.Process(target=_h2h_worker, args=(job, q))
             p.start()
-            r = q.get()
-            p.join()
+            r = _worker_result(p, q)
             rows.append(r)
 
     json_path = os.path.join(out_dir, "head_to_head_person_helmet.json")
@@ -793,8 +817,7 @@ def run_diff_wall(out_dir):
     q = ctx.Queue()
     p = ctx.Process(target=_diff_wall_worker, args=(out_dir, q))
     p.start()
-    items = q.get()
-    p.join()
+    items = _worker_result(p, q)
     return items
 
 
@@ -812,8 +835,7 @@ def run_backend_arena(out_dir):
         q = ctx.Queue()
         p = ctx.Process(target=_backend_worker, args=(sp, q))
         p.start()
-        r = q.get()
-        p.join()
+        r = _worker_result(p, q)
         rows.append(r)
 
     with open(os.path.join(out_dir, "backend_arena.json"), "w") as f:
@@ -859,8 +881,7 @@ def run_custom_arena(args, out_dir):
         job = (args.data, args.data, label, w, imgsz, classes, args.conf, args.iou)
         p = ctx.Process(target=_h2h_worker, args=(job, q))
         p.start()
-        r = q.get()
-        p.join()
+        r = _worker_result(p, q)
         rows.append(r)
 
     out_json = os.path.join(out_dir, "custom_arena.json")
@@ -1055,8 +1076,7 @@ def run_stream_arena(out_dir):
         q = ctx.Queue()
         p = ctx.Process(target=_stream_worker, args=(sp, q))
         p.start()
-        r = q.get()
-        p.join()
+        r = _worker_result(p, q)
         rows.append(r)
 
     with open(os.path.join(out_dir, "stream_arena.json"), "w") as f:
@@ -1109,11 +1129,11 @@ def run_admit_model(args, out_dir):
     spec = (arch, ds_cn, label, weights, ds_key, imgsz, task)
     p = ctx.Process(target=_arch_worker, args=(spec, q))
     p.start()
-    r = q.get()
-    p.join()
+    r = _worker_result(p, q)
 
-    r["official_fps_str"] = target_ds.get("official_fps") if target_ds.get("official_fps") not in (None, "—") else f"{r['val_fp32_vs_fp16']['fp32']['val_fps']} FPS"
-    r["fast_fps_str"] = target_ds.get("fast_fps") if target_ds.get("fast_fps") not in (None, "—") else f"{r['val_fp32_vs_fp16']['fp16']['val_fps']} FPS"
+    # 不将旧模型的历史吞吐量套用到新候选；验证速度不能冒充 FastInfer 实测。
+    r["official_fps_str"] = f"{r['val_fp32_vs_fp16']['fp32']['val_fps']} FPS (val)"
+    r["fast_fps_str"] = "—"
 
     json_path = os.path.join(out_dir, "arch_matrix.json")
     rows = []
@@ -1122,8 +1142,6 @@ def run_admit_model(args, out_dir):
     replaced = False
     for idx, item in enumerate(rows):
         if item.get("dataset") == ds_key:
-            if "e2e_accel" in item and "e2e_accel" not in r:
-                r["e2e_accel"] = item["e2e_accel"]
             rows[idx] = r
             replaced = True
             break

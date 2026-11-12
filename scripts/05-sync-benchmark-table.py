@@ -2,8 +2,10 @@
 """全自动同步脚本：读取 configs/registry.py 与 output/benchmark/arena/*.json 最新实测结果，
 一键刷新 docs/benchmark-full-table.md（A~Z 共 26 列 × 45 行完整算法评测与工程选型台账）。
 
-台账唯一产物为 docs/benchmark-full-table.md（A~I 列为原始业务数据，J~Z 列由本脚本刷新）。
+支持在 Markdown 中使用标准 <table> + rowspan 对同一数据集共享列（A~C、F、H~R、T~Z）进行纵向单元格合并，
+仅每行独立的列（行号、D标签、E标签Yolo类别、G标注对象数、S单类AP）逐行独立显示。
 """
+import html
 import json
 import sys
 from pathlib import Path
@@ -49,6 +51,58 @@ BASE_HEADERS_A_TO_I = [
     "权重",
 ]
 
+# 原始 44 行（行号 2..45）A~I 基础业务数据定义（保证无论表格格式如何变更均可幂等生成）
+RAW_BASE_ROWS = {
+    2: ["人安全帽", "目标检测", "/home/jykj/Dataset/Hbb/PersonHelmet", "人", "2", "309422", "790421", "yolo11x", "models/yolov8/custom/person/yolo11x_960_best.pt"],
+    3: ["人安全帽", "目标检测", "/home/jykj/Dataset/Hbb/PersonHelmet", "戴安全帽", "3", "309422", "278960", "yolo11x", "models/yolov8/custom/person/yolo11x_960_best.pt"],
+    4: ["人安全帽", "目标检测", "/home/jykj/Dataset/Hbb/PersonHelmet", "未戴安全帽", "8", "309422", "300719", "yolo11x", "models/yolov8/custom/person/yolo11x_960_best.pt"],
+    5: ["人睡觉", "目标检测", "/home/jykj/Dataset/Hbb/PersonSleep", "人睡觉", "0", "31216", "6224", "yolov8m", "models/yolov8/custom/20261030-99人睡觉yolov8m/20261030-99.pt"],
+    6: ["人睡觉", "目标检测", "/home/jykj/Dataset/Hbb/PersonSleep", "人", "2", "31216", "44514", "yolov8m", "models/yolov8/custom/20261030-99人睡觉yolov8m/20261030-99.pt"],
+    7: ["人工作服", "目标检测", "/home/jykj/Dataset/Hbb/WorkclothesHelmet", "穿工作服的人", "0", "5158", "4730", "yolov8m", "models/yolov8/custom/20260806-99工作服安全帽yolov8m-v1.0/20260806-99.pt"],
+    8: ["人工作服", "目标检测", "/home/jykj/Dataset/Hbb/WorkclothesHelmet", "未穿工作服", "2", "5158", "3935", "yolov8m", "models/yolov8/custom/20260806-99工作服安全帽yolov8m-v1.0/20260806-99.pt"],
+    9: ["人工作服", "目标检测", "/home/jykj/Dataset/Hbb/WorkclothesHelmet", "戴安全帽", "3", "5158", "5944", "yolov8m", "models/yolov8/custom/20260806-99工作服安全帽yolov8m-v1.0/20260806-99.pt"],
+    10: ["人工作服", "目标检测", "/home/jykj/Dataset/Hbb/WorkclothesHelmet", "未戴安全帽", "8", "5158", "2107", "yolov8m", "models/yolov8/custom/20260806-99工作服安全帽yolov8m-v1.0/20260806-99.pt"],
+    11: ["人乘猴车", "目标检测", "/home/jykj/Dataset/Hbb/RenChengHouChe", "人乘猴车", "0", "8386", "2467", "无", "无"],
+    12: ["人乘猴车", "目标检测", "/home/jykj/Dataset/Hbb/RenChengHouChe", "睡觉", "1", "8386", "828", "无", "无"],
+    13: ["人乘猴车", "目标检测", "/home/jykj/Dataset/Hbb/RenChengHouChe", "人", "2", "8386", "11571", "无", "无"],
+    14: ["人乘猴车", "目标检测", "/home/jykj/Dataset/Hbb/RenChengHouChe", "戴安全帽", "3", "8386", "8098", "无", "无"],
+    15: ["人乘猴车", "目标检测", "/home/jykj/Dataset/Hbb/RenChengHouChe", "超长异物", "4", "8386", "596", "无", "无"],
+    16: ["人乘猴车", "目标检测", "/home/jykj/Dataset/Hbb/RenChengHouChe", "脚蹬地", "5", "8386", "3832", "无", "无"],
+    17: ["人乘猴车", "目标检测", "/home/jykj/Dataset/Hbb/RenChengHouChe", "未戴安全帽", "8", "8386", "675", "无", "无"],
+    18: ["人乘猴车", "目标检测", "/home/jykj/Dataset/Hbb/RenChengHouChe", "打电话", "9", "8386", "584", "无", "无"],
+    19: ["皮带原版", "目标检测", "/home/jykj/Dataset/Hbb/PiDaiYuanBan", "无煤", "0", "166048", "62406", "yolov11m", "models/yolov8/custom/belt/yolov11m_belt.pt"],
+    20: ["皮带原版", "目标检测", "/home/jykj/Dataset/Hbb/PiDaiYuanBan", "有煤", "1", "166048", "96893", "yolov11m", "models/yolov8/custom/belt/yolov11m_belt.pt"],
+    21: ["皮带原版", "目标检测", "/home/jykj/Dataset/Hbb/PiDaiYuanBan", "水煤", "2", "166048", "181", "yolov11m", "models/yolov8/custom/belt/yolov11m_belt.pt"],
+    22: ["皮带原版", "目标检测", "/home/jykj/Dataset/Hbb/PiDaiYuanBan", "托辊", "3", "166048", "806412", "yolov11m", "models/yolov8/custom/belt/yolov11m_belt.pt"],
+    23: ["皮带原版", "目标检测", "/home/jykj/Dataset/Hbb/PiDaiYuanBan", "大块煤", "4", "166048", "53677", "yolov11m", "models/yolov8/custom/belt/yolov11m_belt.pt"],
+    24: ["皮带原版", "目标检测", "/home/jykj/Dataset/Hbb/PiDaiYuanBan", "异物", "5", "166048", "36796", "yolov11m", "models/yolov8/custom/belt/yolov11m_belt.pt"],
+    25: ["皮带原版", "目标检测", "/home/jykj/Dataset/Hbb/PiDaiYuanBan", "未堆煤", "6", "166048", "4899", "yolov11m", "models/yolov8/custom/belt/yolov11m_belt.pt"],
+    26: ["皮带原版", "目标检测", "/home/jykj/Dataset/Hbb/PiDaiYuanBan", "堆煤", "7", "166048", "10159", "yolov11m", "models/yolov8/custom/belt/yolov11m_belt.pt"],
+    27: ["护帮板", "目标检测", "/home/jykj/Dataset/Hbb/HuBangBan", "人", "2", "14121", "1525", "无", "无"],
+    28: ["护帮板", "目标检测", "/home/jykj/Dataset/Hbb/HuBangBan", "护帮板", "3", "14121", "43956", "无", "无"],
+    29: ["护帮板", "目标检测", "/home/jykj/Dataset/Hbb/HuBangBan", "滚筒", "4", "14121", "2717", "无", "无"],
+    30: ["探水后上杆钻机", "目标检测", "/home/jykj/Dataset/Hbb/TanShuiHouShangGan", "机器", "0", "704199", "655326", "yolov9", "models/yolov8/custom/tan_shui_hou_shanggan/探水后上杆-yolov9e-960.pt"],
+    31: ["探水后上杆钻机", "目标检测", "/home/jykj/Dataset/Hbb/TanShuiHouShangGan", "堵头", "1", "704199", "235126", "yolov9", "models/yolov8/custom/tan_shui_hou_shanggan/探水后上杆-yolov9e-960.pt"],
+    32: ["探水后上杆钻机", "目标检测", "/home/jykj/Dataset/Hbb/TanShuiHouShangGan", "机尾", "2", "704199", "581444", "yolov9", "models/yolov8/custom/tan_shui_hou_shanggan/探水后上杆-yolov9e-960.pt"],
+    33: ["风门开关", "目标检测", "/home/jykj/Dataset/Hbb/FengMenKaiGuan", "风门关", "0", "19409", "11270", "yolo11", "models/yolov8/custom/20260923-99风门开关yolov11m-v1.4/20260923-99.pt"],
+    34: ["风门开关", "目标检测", "/home/jykj/Dataset/Hbb/FengMenKaiGuan", "风门开", "1", "19409", "6918", "yolo11", "models/yolov8/custom/20260923-99风门开关yolov11m-v1.4/20260923-99.pt"],
+    35: ["传感器", "目标检测", "/home/jykj/Dataset/Hbb/ChuanGanQi", "传感器", "0", "2299", "2602", "yolo11", "models/yolov8/custom/20260904-传感器yolov11m-v1.5/20260904-99.pt"],
+    36: ["传感器", "目标检测", "/home/jykj/Dataset/Hbb/ChuanGanQi", "传感器进气口", "1", "2299", "2072", "yolo11", "models/yolov8/custom/20260904-传感器yolov11m-v1.5/20260904-99.pt"],
+    37: ["传感器", "目标检测", "/home/jykj/Dataset/Hbb/ChuanGanQi", "传感器架子", "2", "2299", "1517", "yolo11", "models/yolov8/custom/20260904-传感器yolov11m-v1.5/20260904-99.pt"],
+    38: ["卡车空满载", "目标检测", "/home/jykj/Dataset/Hbb/ChanYunXiaoMeiZhong", "卡车空载", "0", "77074", "28203", "无", "无"],
+    39: ["卡车空满载", "目标检测", "/home/jykj/Dataset/Hbb/ChanYunXiaoMeiZhong", "卡车满载", "1", "77074", "952", "无", "无"],
+    40: ["卡车空满载", "目标检测", "/home/jykj/Dataset/Hbb/ChanYunXiaoMeiZhong", "车辆车斗遮盖", "3", "77074", "19786", "无", "无"],
+    41: ["卡车空满载", "目标检测", "/home/jykj/Dataset/Hbb/ChanYunXiaoMeiZhong", "块煤", "6", "77074", "5349", "无", "无"],
+    42: ["卡车空满载", "目标检测", "/home/jykj/Dataset/Hbb/ChanYunXiaoMeiZhong", "沫煤", "7", "77074", "6106", "无", "无"],
+    43: ["探水前上杆", "目标旋转", "/home/jykj/Dataset/Obb/TS-Front_V2", "无杆", "0", "265179", "108087", "yolov8", "models/yolov8/custom/tan_shui_qian_shanggan/探水前上杆-v8l-obb.pt"],
+    44: ["探水前上杆", "目标旋转", "/home/jykj/Dataset/Obb/TS-Front_V2", "有杆", "1", "265179", "157463", "yolov8", "models/yolov8/custom/tan_shui_qian_shanggan/探水前上杆-v8l-obb.pt"],
+    45: ["探水前上杆", "目标旋转", "/home/jykj/Dataset/Obb/TS-Front_V2", "机器", "2", "265179", "262750", "yolov8", "models/yolov8/custom/tan_shui_qian_shanggan/探水前上杆-v8l-obb.pt"],
+}
+
+# 27 个输出列（0=行号, 1..9=A..I, 10..26=J..Z）中哪些列按数据集纵向合并：
+# 不合并的列索引：0(行号), 4(D:标签), 5(E:标签Yolo类别), 7(G:标注对象数), 19(S:单类AP50/AP50-95)
+UNMERGED_COL_INDICES = {0, 4, 5, 7, 19}
+
 
 def load_live_arena_metrics():
     """加载 algo_arena.py 产出的最新 arch_matrix.json 与 backend_arena.json。"""
@@ -68,8 +122,10 @@ def build_row_dict(ds_entry, arch_by_ds, backend_by_arch):
     has_weight = ds_entry["weights_host"] is not None
     dkey = ds_entry["dataset_key"]
     arch = ds_entry["arch"]
-    live = arch_by_ds.get(dkey, {})
-    back = backend_by_arch.get(arch, {})
+    # 旧矩阵没有权重摘要，无法证明与注册表模型一致；禁止将其指标混入台账。
+    # 新协议结果单独保存，待支持按明确的模型/运行 ID 选择后再接入。
+    live = {}
+    back = {}
 
     if live:
         file_mb_str = f"{live['file_mb']} MB"
@@ -147,44 +203,20 @@ def build_row_dict(ds_entry, arch_by_ds, backend_by_arch):
     }
 
 
-def parse_existing_base_rows():
-    """从 docs/benchmark-full-table.md 读取行 2..45 的原始 A~I 列（前 9 列）数据。"""
-    base_rows = {}
-    if not TABLE_MD.exists():
-        raise FileNotFoundError(f"未找到台账 Markdown 文件: {TABLE_MD}")
-    for line in TABLE_MD.read_text(encoding="utf-8").splitlines():
-        line = line.strip()
-        if not line.startswith("| **"):
-            continue
-        # 按单元格切分（注意表格内可能包含形如 `FP16:0.9778 | INT8:0.9717` 的管道符，但 A~I 前 9 列不含管道符）
-        parts = [p.strip() for p in line.strip("|").split("|")]
-        rnum_str = parts[0].replace("*", "").strip()
-        if not rnum_str.isdigit():
-            continue
-        rnum = int(rnum_str)
-        # parts[0] 是行号，parts[1..9] 是 A~I 共 9 列
-        base_rows[rnum] = parts[1:10]
-    return base_rows
-
-
 def main():
-    arch_by_ds, backend_by_arch = load_live_arena_metrics()
+    # 历史结果无法验证权重身份，不载入也不混合。
+    arch_by_ds, backend_by_arch = {}, {}
     ds_map = {
         k: build_row_dict(v, arch_by_ds, backend_by_arch)
         for k, v in get_dataset_map().items()
     }
-    base_rows = parse_existing_base_rows()
 
-    headers = BASE_HEADERS_A_TO_I + [col[1] for col in NEW_COLS]
-    lines = [
-        "# 矿山视觉算法横向评测整表 Markdown 台账（A～Z 共 26 列 × 45 行）\n",
-        "> **说明**：本文件为项目标准归档文档 `docs/benchmark-full-table.md`，由 `scripts/05-sync-benchmark-table.py` 从 `configs/registry.py` 与 `output/benchmark/arena/*.json` 自动同步生成。配套指标与工程约定说明见 [`docs/metrics-and-conventions.md`](./metrics-and-conventions.md)，标准测试集详情见 [`docs/dataset-standard-report.md`](./dataset-standard-report.md)。\n",
-        "| 行号 | " + " | ".join(headers) + " |",
-        "|---|" + "|".join(["---"] * 26) + "|",
-    ]
+    headers = ["行号"] + BASE_HEADERS_A_TO_I + [col[1] for col in NEW_COLS]
 
+    # 先构建 44 行（rnum 2..45）的完整 27 列矩阵
+    all_rows = []
     for rnum in range(2, 46):
-        a_to_i = list(base_rows[rnum])
+        a_to_i = list(RAW_BASE_ROWS[rnum])
         ds_name = a_to_i[0]
         cls_id = a_to_i[4]
         info = ds_map.get(ds_name)
@@ -201,12 +233,59 @@ def main():
         else:
             j_to_z = ["—"] * len(NEW_COLS)
 
-        row_vals = [v if v else "—" for v in (a_to_i + j_to_z)]
-        lines.append(f"| **{rnum}** | " + " | ".join(row_vals) + " |")
+        row_vals = [str(rnum)] + [v if v else "—" for v in (a_to_i + j_to_z)]
+        all_rows.append(row_vals)
+
+    # 按数据集名称（col 1）计算连续行的 rowspan 区间
+    n_rows = len(all_rows)
+    group_span = [0] * n_rows
+    i = 0
+    while i < n_rows:
+        ds_name = all_rows[i][1]
+        j = i + 1
+        while j < n_rows and all_rows[j][1] == ds_name:
+            j += 1
+        group_span[i] = j - i
+        i = j
+
+    lines = [
+        "# 矿山视觉算法横向评测整表台账（A～Z 共 26 列 × 45 行）\n",
+        "> **说明**：本文件为项目标准归档文档 `docs/benchmark-full-table.md`，由 `scripts/05-sync-benchmark-table.py` 从 `configs/registry.py` 的历史数据生成；未验证权重身份的旧评测结果不会自动混入，新协议结果另行保存。同一业务数据集共享的列已自动纵向合并（`rowspan`），仅按标签独立的列（行号、标签、类别ID、标注对象数、单类AP）逐行展开。配套指标规范见 [`docs/metrics-and-conventions.md`](./metrics-and-conventions.md)，标准测试集详情见 [`docs/dataset-standard-report.md`](./dataset-standard-report.md)。\n",
+        "<table>",
+        "  <thead>",
+        "    <tr>",
+    ]
+    for h in headers:
+        lines.append(f"      <th>{html.escape(h)}</th>")
+    lines.extend([
+        "    </tr>",
+        "  </thead>",
+        "  <tbody>",
+    ])
+
+    for idx, row in enumerate(all_rows):
+        lines.append("    <tr>")
+        span = group_span[idx]
+        for col_idx, val in enumerate(row):
+            esc_val = f"<strong>{html.escape(val)}</strong>" if col_idx in (0, 1) else html.escape(val)
+            if col_idx in UNMERGED_COL_INDICES:
+                lines.append(f"      <td>{esc_val}</td>")
+            else:
+                if span > 1:
+                    lines.append(f'      <td rowspan="{span}">{esc_val}</td>')
+                elif span == 1:
+                    lines.append(f"      <td>{esc_val}</td>")
+                # span == 0 表示被上方单元格合并，不输出 <td>
+        lines.append("    </tr>")
+
+    lines.extend([
+        "  </tbody>",
+        "</table>",
+    ])
 
     TABLE_MD.parent.mkdir(exist_ok=True)
     TABLE_MD.write_text("\n".join(lines) + "\n", encoding="utf-8")
-    print(f"已从 registry.py + output/benchmark/arena/*.json 自动同步 26 列 × 45 行台账至: {TABLE_MD}")
+    print(f"已从 registry.py 历史数据生成台账（未混入旧评测结果）: {TABLE_MD}")
 
 
 if __name__ == "__main__":
