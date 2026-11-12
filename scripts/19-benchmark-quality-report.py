@@ -92,6 +92,7 @@ ISSUE_LABELS = {    'decode_error': '图片解码失败',
 def load():
     """读取全部数据集汇总与分片明细。"""
     datasets, shards = [], []
+    sources = []
     for ds in DATASETS:
         key = ds['dataset_key']
         target = OUT / key
@@ -101,6 +102,7 @@ def load():
             continue
         data = json.loads(summary.read_text(encoding='utf-8'))
         datasets.append(data)
+        sources.append(summary)
         for f in sorted(target.glob('*.json')):
             if f.name == 'summary.json':
                 continue
@@ -110,7 +112,8 @@ def load():
                 continue
             shard['dataset_key'] = key
             shards.append(shard)
-    return datasets, shards
+            sources.append(f)
+    return datasets, shards, sources
 
 
 def collect_issues(shards):
@@ -409,9 +412,11 @@ def build_markdown(datasets, shards, agg, rows, generated):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--check', action='store_true', help='只校验产物完整性，不写报告')
+    ap.add_argument('--generated-at', metavar='YYYY-MM-DD HH:MM',
+                    help='报告生成时间；默认取输入产物的最新修改时间，保证重跑结果可复现')
     args = ap.parse_args()
 
-    datasets, shards = load()
+    datasets, shards, sources = load()
     missing = [d['dataset_key'] for d in datasets if d.get('missing')]
     if missing:
         print(f'缺少汇总产物：{missing}', file=sys.stderr)
@@ -424,7 +429,15 @@ def main():
 
     agg = totals(datasets)
     rows = collect_issues(shards)
-    generated = datetime.now().strftime('%Y-%m-%d %H:%M')
+    # 默认用输入产物的最新修改时间而非当前时间：同样的分片产物重跑会得到
+    # 逐字节相同的报告，便于用 git diff / 校验和判断内容是否真的变了。
+    if args.generated_at:
+        generated = args.generated_at
+    elif sources:
+        generated = datetime.fromtimestamp(
+            max(p.stat().st_mtime for p in sources)).strftime('%Y-%m-%d %H:%M')
+    else:
+        generated = datetime.now().strftime('%Y-%m-%d %H:%M')
 
     OUT.mkdir(parents=True, exist_ok=True)
     report = {
