@@ -55,10 +55,12 @@ vision-benchmark/
 │   ├── 16-quality-audit-daemon.sh   # 内容级质检的后台守护式入口
 │   ├── 19-benchmark-quality-report.py # 汇总质检结果并生成 docs/benchmark-quality-report.md
 │   ├── 20-benchmark-quality-checksums.py # 生成/校验质检产物的 sha256 清单
-│   └── 21-fix-bad-labels.py         # 清理已定位的 14 个异常标注（默认 dry-run + 备份）
+│   ├── 21-fix-bad-labels.py         # 清理已定位的 14 个异常标注（默认 dry-run + 备份）
+│   ├── 22-push-with-token.sh        # 备用推送方式（HTTPS + token；本机默认走 SSH）
 ├── models/yolov8/custom/           # 8 个业务模型权重 (.pt) 及配套训练/类别配置 .yaml
 ├── data/benchmark/standard/        # 11 个业务标准测试集（共 5,700 张图片、labels、data.yaml、manifest.json）
-└── output/benchmark/arena/         # 自动化评测结构化产物（JSON / Markdown 报告）
+├── output/benchmark/arena/         # 自动化评测结构化产物（JSON / Markdown 报告）
+└── output/dataset/benchmark-quality-v1/ # 全量质检产物（report.json、issues.csv、CHECKSUMS.txt、逐数据集 summary.json）
 ```
 
 ---
